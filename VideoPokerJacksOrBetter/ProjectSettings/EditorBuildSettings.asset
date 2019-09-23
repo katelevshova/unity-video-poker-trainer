@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/VideoPokerJacksOrBetter/Scenes/MainScene.unity
+    guid: a6eb303bb6d9f58478eec23df1ac6e17
   m_configObjects: {}
