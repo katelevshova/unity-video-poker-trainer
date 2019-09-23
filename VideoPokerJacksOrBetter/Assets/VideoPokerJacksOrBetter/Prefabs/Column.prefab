@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4894433386029504560}
   - component: {fileID: 4894433386029504563}
   m_Layer: 0
-  m_Name: txtMP_Element (4)
+  m_Name: txtMP_Element_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 4894433386314102867}
   - component: {fileID: 4894433386314102866}
   m_Layer: 0
-  m_Name: txtMP_Element (8)
+  m_Name: txtMP_Element_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 4894433386591321546}
   - component: {fileID: 4894433386591321549}
   m_Layer: 0
-  m_Name: txtMP_Element (9)
+  m_Name: txtMP_Footer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 4894433386597166047}
   - component: {fileID: 4894433386597166046}
   m_Layer: 0
-  m_Name: txtMP_Element (1)
+  m_Name: txtMP_Element_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 4894433386805719105}
   - component: {fileID: 4894433386805719104}
   m_Layer: 0
-  m_Name: txtMP_Element (3)
+  m_Name: txtMP_Element_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -918,7 +918,7 @@ GameObject:
   - component: {fileID: 4894433387092884562}
   - component: {fileID: 4894433387092884565}
   m_Layer: 0
-  m_Name: txtMP_Element (2)
+  m_Name: txtMP_Element_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1199,7 +1199,7 @@ GameObject:
   - component: {fileID: 4894433387301345805}
   - component: {fileID: 4894433387301345804}
   m_Layer: 0
-  m_Name: txtMP_Element (7)
+  m_Name: txtMP_Element_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1380,7 +1380,7 @@ GameObject:
   - component: {fileID: 4894433387327819731}
   - component: {fileID: 4894433387327819730}
   m_Layer: 0
-  m_Name: txtMP_Element (6)
+  m_Name: txtMP_Element_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1561,7 +1561,7 @@ GameObject:
   - component: {fileID: 4894433387491280312}
   - component: {fileID: 4894433387491280315}
   m_Layer: 0
-  m_Name: txtMP_Element
+  m_Name: txtMP_Element_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1923,7 +1923,7 @@ GameObject:
   - component: {fileID: 4894433387635643680}
   - component: {fileID: 4894433387635643683}
   m_Layer: 0
-  m_Name: txtMP_Element (5)
+  m_Name: txtMP_Element_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
