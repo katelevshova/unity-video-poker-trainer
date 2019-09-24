@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class CardsDeck : MonoBehaviour
     public List<Rank> rankList;
     public List<Suit> suitList;
 
+    public const int DECK_SIZE = 52;
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,12 +19,6 @@ public class CardsDeck : MonoBehaviour
         InitRankList();
         InitSuitList();
         InitAllCards();
-        
-    }
-
-    private void InitAllCards()
-    {
-        cardsList = new List<Card>();
     }
 
     private void InitSuitList()
@@ -53,6 +50,7 @@ public class CardsDeck : MonoBehaviour
         rankList.Add(new Rank(Rank.SEVEN, Rank.SEVEN_IMG_NAME));
         rankList.Add(new Rank(Rank.EIGHT, Rank.EIGHT_IMG_NAME));
         rankList.Add(new Rank(Rank.NINE, Rank.NINE_IMG_NAME));
+        rankList.Add(new Rank(Rank.TEN, Rank.TEN_IMG_NAME));
         rankList.Add(new Rank(Rank.JACK, Rank.JACK_IMG_NAME));
         rankList.Add(new Rank(Rank.QUEEN, Rank.QUEEN_IMG_NAME));
         rankList.Add(new Rank(Rank.KING, Rank.KING_IMG_NAME));
@@ -61,6 +59,33 @@ public class CardsDeck : MonoBehaviour
         foreach (Rank rank in rankList)
         {
             DebugUtil.Instance.PrintD(CLASS_NAME, "InitRankList", "rank.name= " + rank.name + ", rank.imgName= " + rank.imgName);
+        }
+    }
+
+    private void InitAllCards()
+    {
+        cardsList = new List<Card>();
+
+        int amount = 1;
+
+        DebugUtil.Instance.PrintD(CLASS_NAME, "InitAllCards", "-------------------------------------------------------------");
+
+        foreach (Suit suit in suitList)
+        {
+            foreach (Rank rank in rankList)
+            {
+                Card card = new Card(suit, rank);
+                card.id = amount;
+                cardsList.Add(card);
+                DebugUtil.Instance.PrintD(CLASS_NAME, "InitAllCards", card.ToString());
+
+                amount++;
+            }
+        }
+
+        if(amount < DECK_SIZE -1)
+        {
+            throw new Exception("There must be 52 cards in a deck!");
         }
     }
 
