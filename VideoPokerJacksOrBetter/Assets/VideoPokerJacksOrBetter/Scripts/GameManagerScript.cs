@@ -8,6 +8,10 @@ public class GameManagerScript : MonoBehaviour
     public static GameManagerScript Instance;
     private static string CLASS_NAME = typeof(GameManagerScript).ToString();
 
+    public const int CREDITS_START_AMOUNT = 100;
+    public const int BET_MAX = 5;
+    public int creditsCurrent = CREDITS_START_AMOUNT;
+    public int betCurrent = BET_MAX;
     public PayoutTable payoutTable;
     public string gameState = GameStates.INIT;
 
