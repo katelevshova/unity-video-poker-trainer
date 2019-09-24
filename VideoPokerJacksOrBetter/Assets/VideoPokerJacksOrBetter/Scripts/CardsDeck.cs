@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CardsDeck : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class CardsDeck : MonoBehaviour
         InitRankList();
         InitSuitList();
         InitAllCards();
+        Shuffle();
     }
 
     private void InitSuitList()
@@ -85,19 +87,36 @@ public class CardsDeck : MonoBehaviour
 
         if(amount < DECK_SIZE -1)
         {
-            throw new Exception("There must be 52 cards in a deck!");
+            throw new Exception("There must be 52 cards in a deck! check InitRankList and InitSuitList  ");
         }
     }
 
     public void Shuffle()
     {
+        for (int i = 0; i < DECK_SIZE; i++)
+        {
+            Card temp = cardsList[i];
+            int randomIndex = Random.Range(i, cardsList.Count);
+            cardsList[i] = cardsList[randomIndex];
+            cardsList[randomIndex] = temp;
+        }
 
+        foreach(Card card in cardsList)
+        {
+            DebugUtil.Instance.PrintD(CLASS_NAME, "Shuffle", "imgFileName= " + card.imgFileName);
+        }
     }
 
-    public void Deal(int numberCards)
+    public List<Card> Deal(int dealSize)
     {
+        List<Card> returnCards = new List<Card>();
 
+        for (int i = 0; i < dealSize; i++)
+        {
+            Card card = cardsList[i];
+            returnCards.Add(card);
+            cardsList.RemoveAt(i);
+        }
+        return returnCards;
     }
-
-  
-}
+ }
