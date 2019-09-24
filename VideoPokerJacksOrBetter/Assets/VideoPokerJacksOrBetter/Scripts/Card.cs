@@ -20,9 +20,11 @@ public class Card : MonoBehaviour
         Image img = gameObject.GetComponent(typeof(Image)) as Image;
         imgFileName = img.sprite.name;
 
-        DebugUtil.Instance.PrintD(CLASS_NAME, "Start", "CARD INFO: " + toString());
+        DebugUtil.Instance.PrintD(CLASS_NAME, "Start", "CARD INFO: " + ToString());
     }
-    public string toString()
+
+    override  
+    public string ToString()
     {
         string info = "id= " + id +
                     ", suit= " + suit +

@@ -63,6 +63,7 @@
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\DebugUtil.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\GameManagerScript.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\GameStates.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\PayoutTable.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Rank.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Suit.cs" />

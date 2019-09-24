@@ -9,6 +9,7 @@ public class GameManagerScript : MonoBehaviour
     private static string CLASS_NAME = typeof(GameManagerScript).ToString();
 
     public PayoutTable payoutTable;
+    public string gameState = GameStates.INIT;
 
     public void Awake()
     {
@@ -38,11 +39,26 @@ public class GameManagerScript : MonoBehaviour
             DebugUtil.Instance.PrintD(CLASS_NAME, "Start", "Initialize payoutTable, drag PayoutTable from Hierarchy window");
             throw new Exception("Initialize payoutTable, drag PayoutTable from Hierarchy window");
         }
+
+        UpdateGameState(GameStates.INIT);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateGameState(string state)
     {
-        
+        gameState = state;
+
+        switch(gameState)
+        {
+            case GameStates.INIT:
+                Initialize();
+                break;
+        }
     }
+
+    private void Initialize()
+    {
+        DebugUtil.Instance.PrintD(CLASS_NAME, "Initialize");
+    }
+
 }
