@@ -27,7 +27,7 @@ public class CardsContainer : MonoBehaviour
         
     }
 
-    public void SetFullHand(List<Card> cards)
+    public void SetFullHand(List<Card> cards, bool isGameStarted)
     {
         if(cardHand != null)
         {
@@ -39,12 +39,10 @@ public class CardsContainer : MonoBehaviour
 
         foreach(CardButton cardBtn in cardButtons)
         {
-
-            DebugUtil.Instance.PrintD(CLASS_NAME, "SetFullHand", "cardBtn.name= " + cardBtn.name);
-
             cardBtn.card = cardHand[cardNumber];
+            DebugUtil.Instance.PrintD(CLASS_NAME, "SetFullHand", "cardBtn.name= " + cardBtn.name + ", cardBtn.imgFileName= " + cardBtn.card.imgFileName);
 
-            DebugUtil.Instance.PrintD(CLASS_NAME, "SetFullHand", "cardBtn.card= " + cardBtn.card.imgFileName);
+            cardBtn.ShowFaceSide(isGameStarted);
 
             cardNumber++;
         }

@@ -74,7 +74,7 @@ public class GameManagerScript : MonoBehaviour
     private void Initialize()
     {
         DebugUtil.Instance.PrintD(CLASS_NAME, "Initialize", "==============================");
-        cardsContainer.SetFullHand(cardsDeck.Deal(CardsContainer.HAND_SIZE));
+        cardsContainer.SetFullHand(cardsDeck.Deal(CardsContainer.HAND_SIZE), false);
     }
 
 }

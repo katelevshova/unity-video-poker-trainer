@@ -23,14 +23,6 @@ public class Card
         
     }
 
-    /*public void Start()
-    {
-        Image img = gameObject.GetComponent(typeof(Image)) as Image;
-        imgFileName = img.sprite.name;
-
-        DebugUtil.Instance.PrintD(CLASS_NAME, "Start", "CARD INFO: " + ToString());
-    } */
-
     override  
     public string ToString()
     {
