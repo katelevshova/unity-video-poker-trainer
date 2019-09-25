@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 314883314220742749}
   - component: {fileID: 8807343035249098547}
   m_Layer: 0
-  m_Name: TextMeshPro Text
+  m_Name: txtHold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,7 +10,8 @@ public class CardButton : MonoBehaviour
     public string spriteName = ""; //card_back
 
     public Card card;
-    public Image image;
+    private Image image;
+    private TMPro.TextMeshProUGUI txtHold;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,13 @@ public class CardButton : MonoBehaviour
             {
                 image = child.gameObject.GetComponent<Image>();
             }
+            if (child.gameObject.name == "txtHold")
+            {
+                txtHold = child.gameObject.GetComponent<TMPro.TextMeshProUGUI>();
+            }
         }
+
+        txtHold.text = "";
     }
 
     // Update is called once per frame
