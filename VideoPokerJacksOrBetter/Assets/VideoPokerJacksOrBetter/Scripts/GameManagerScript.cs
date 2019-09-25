@@ -18,6 +18,8 @@ public class GameManagerScript : MonoBehaviour
     public ActionBar actionBar;
     public string gameState = GameStates.INIT;
 
+    public TMPro.TextMeshProUGUI txtMessage;
+
     public void Awake()
     {
         //This is a common approach to handling a class with a reference to itself.
@@ -76,6 +78,7 @@ public class GameManagerScript : MonoBehaviour
                 break;
             case GameStates.FIRST_DEAL:
                 cardsContainer.SetFullHand(cardsDeck.Deal(CardsContainer.HAND_SIZE), true);
+                txtMessage.text = "Select any card to HOLD and make a second DEAL";
                 break;
         }
     }
@@ -83,6 +86,7 @@ public class GameManagerScript : MonoBehaviour
     private void Initialize()
     {
         DebugUtil.Instance.PrintD(CLASS_NAME, "Initialize", "==============================");
+        txtMessage.text = "Press DEAL button to START a game ";       // localize it later
     }
 
     //START ----------- Button click handlers -------------------------------

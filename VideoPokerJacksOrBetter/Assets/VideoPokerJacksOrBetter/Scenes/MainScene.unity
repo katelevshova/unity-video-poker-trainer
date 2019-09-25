@@ -5683,6 +5683,7 @@ MonoBehaviour:
   cardsDeck: {fileID: 2057953063}
   actionBar: {fileID: 28001499}
   gameState: 
+  txtMessage: {fileID: 1151306446}
 --- !u!114 &1756974943
 MonoBehaviour:
   m_ObjectHideFlags: 0
