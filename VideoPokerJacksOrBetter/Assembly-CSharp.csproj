@@ -62,13 +62,13 @@
   <ItemGroup>
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\CardButton.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\CardsContainer.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\CardsDeck.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\DebugUtil.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\GameManagerScript.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\GameStates.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\PayoutTable.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Rank.cs" />
-    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\RanksList.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Suit.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

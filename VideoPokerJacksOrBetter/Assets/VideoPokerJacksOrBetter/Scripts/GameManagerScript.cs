@@ -13,6 +13,8 @@ public class GameManagerScript : MonoBehaviour
     public int creditsCurrent = CREDITS_START_AMOUNT;
     public int betCurrent = BET_MAX;
     public PayoutTable payoutTable;
+    public CardsContainer cardsContainer;
+    public CardsDeck cardsDeck;
     public string gameState = GameStates.INIT;
 
     public void Awake()
@@ -40,8 +42,17 @@ public class GameManagerScript : MonoBehaviour
 
         if (payoutTable == null)
         {
-            DebugUtil.Instance.PrintD(CLASS_NAME, "Start", "Initialize payoutTable, drag PayoutTable from Hierarchy window");
             throw new Exception("Initialize payoutTable, drag PayoutTable from Hierarchy window");
+        }
+
+        if (cardsContainer == null)
+        {
+            throw new Exception("Initialize cardsContainer, drag CardsContainer from Hierarchy window");
+        }
+
+        if (cardsDeck == null)
+        {
+            throw new Exception("Initialize cardsDeck, drag CardsDeck from Hierarchy window");
         }
 
         UpdateGameState(GameStates.INIT);
@@ -62,7 +73,8 @@ public class GameManagerScript : MonoBehaviour
 
     private void Initialize()
     {
-        DebugUtil.Instance.PrintD(CLASS_NAME, "Initialize");
+        DebugUtil.Instance.PrintD(CLASS_NAME, "Initialize", "==============================");
+        cardsContainer.SetFullHand(cardsDeck.Deal(CardsContainer.HAND_SIZE));
     }
 
 }
