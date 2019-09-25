@@ -8,7 +8,7 @@ public class CardsDeck : MonoBehaviour
 {
     private static string CLASS_NAME = typeof(CardsDeck).ToString();
     public List<Card> cardsList;
-    public List<Rank> rankList;
+    public List<CardsRank> rankList;
     public List<Suit> suitList;
 
     public const int DECK_SIZE = 52;
@@ -41,24 +41,24 @@ public class CardsDeck : MonoBehaviour
 
     private void InitRankList()
     {
-        rankList = new List<Rank>();
+        rankList = new List<CardsRank>();
 
-        rankList.Add(new Rank(Rank.ACE, Rank.ACE_IMG_NAME));
-        rankList.Add(new Rank(Rank.TWO, Rank.TWO_IMG_NAME));
-        rankList.Add(new Rank(Rank.THREE, Rank.THREE_IMG_NAME));
-        rankList.Add(new Rank(Rank.FOUR, Rank.FOUR_IMG_NAME));
-        rankList.Add(new Rank(Rank.FIVE, Rank.FIVE_IMG_NAME));
-        rankList.Add(new Rank(Rank.SIX, Rank.SIX_IMG_NAME));
-        rankList.Add(new Rank(Rank.SEVEN, Rank.SEVEN_IMG_NAME));
-        rankList.Add(new Rank(Rank.EIGHT, Rank.EIGHT_IMG_NAME));
-        rankList.Add(new Rank(Rank.NINE, Rank.NINE_IMG_NAME));
-        rankList.Add(new Rank(Rank.TEN, Rank.TEN_IMG_NAME));
-        rankList.Add(new Rank(Rank.JACK, Rank.JACK_IMG_NAME));
-        rankList.Add(new Rank(Rank.QUEEN, Rank.QUEEN_IMG_NAME));
-        rankList.Add(new Rank(Rank.KING, Rank.KING_IMG_NAME));
+        rankList.Add(new CardsRank(CardsRank.ACE, CardsRank.ACE_IMG_NAME));
+        rankList.Add(new CardsRank(CardsRank.TWO, CardsRank.TWO_IMG_NAME));
+        rankList.Add(new CardsRank(CardsRank.THREE, CardsRank.THREE_IMG_NAME));
+        rankList.Add(new CardsRank(CardsRank.FOUR, CardsRank.FOUR_IMG_NAME));
+        rankList.Add(new CardsRank(CardsRank.FIVE, CardsRank.FIVE_IMG_NAME));
+        rankList.Add(new CardsRank(CardsRank.SIX, CardsRank.SIX_IMG_NAME));
+        rankList.Add(new CardsRank(CardsRank.SEVEN, CardsRank.SEVEN_IMG_NAME));
+        rankList.Add(new CardsRank(CardsRank.EIGHT, CardsRank.EIGHT_IMG_NAME));
+        rankList.Add(new CardsRank(CardsRank.NINE, CardsRank.NINE_IMG_NAME));
+        rankList.Add(new CardsRank(CardsRank.TEN, CardsRank.TEN_IMG_NAME));
+        rankList.Add(new CardsRank(CardsRank.JACK, CardsRank.JACK_IMG_NAME));
+        rankList.Add(new CardsRank(CardsRank.QUEEN, CardsRank.QUEEN_IMG_NAME));
+        rankList.Add(new CardsRank(CardsRank.KING, CardsRank.KING_IMG_NAME));
 
         DebugUtil.Instance.PrintD(CLASS_NAME, "InitRankList", "-------------------------------------------------------------");
-        foreach (Rank rank in rankList)
+        foreach (CardsRank rank in rankList)
         {
             DebugUtil.Instance.PrintD(CLASS_NAME, "InitRankList", "rank.name= " + rank.name + ", rank.imgName= " + rank.imgName);
         }
@@ -74,7 +74,7 @@ public class CardsDeck : MonoBehaviour
 
         foreach (Suit suit in suitList)
         {
-            foreach (Rank rank in rankList)
+            foreach (CardsRank rank in rankList)
             {
                 Card card = new Card(suit, rank);
                 card.id = amount;

@@ -10,12 +10,12 @@ public class Card
 
     public int id = 0; // from 1-52 
     public Suit suit;  // Club=c, Diamond=d, Heart=h, Spade=s
-    public Rank rank;  // Ace=1, One=1, ... King = 13}
+    public CardsRank rank;  // Ace=1, One=1, ... King = 13}
     public bool isHeld = false;
     public bool isFaceSide = false;  
     public string imgFileName = "";
 
-    public Card(Suit _suit, Rank _rank)
+    public Card(Suit _suit, CardsRank _rank)
     {
         suit = _suit;
         rank = _rank;

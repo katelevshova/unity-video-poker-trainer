@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rank
+public class CardsRank
 {
     public const string ACE = "ACE";
     public const string TWO = "TWO";
@@ -36,7 +36,7 @@ public class Rank
     public string name;
     public string imgName;
 
-    public Rank(string _name, string _imgName)
+    public CardsRank(string _name, string _imgName)
     {
         name = _name;
         imgName = _imgName;

@@ -62,16 +62,17 @@
   <ItemGroup>
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\ActionBar.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\BalanceInfo.cs" />
-    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card.cs" />
-    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\CardButton.cs" />
-    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\CardsContainer.cs" />
-    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\CardsDeck.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\Card.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\CardButton.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\CardsContainer.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\CardsDeck.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\CardsRank.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\Suit.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\DebugUtil.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\GameManagerScript.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\GameStates.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\PayoutTable.cs" />
-    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Rank.cs" />
-    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Suit.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\PayoutTableModel.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

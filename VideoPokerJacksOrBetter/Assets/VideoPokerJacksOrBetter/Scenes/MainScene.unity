@@ -5832,8 +5832,8 @@ MonoBehaviour:
   winLossAmount: 0
   betAmount: 5
   txtCreditsValue: {fileID: 1430816954}
-  txtBetValue: {fileID: 356049065}
-  txtWinLossValue: {fileID: 733079756}
+  txtWinLossValue: {fileID: 356049065}
+  txtBetValue: {fileID: 733079756}
 --- !u!222 &1821752576
 CanvasRenderer:
   m_ObjectHideFlags: 0
