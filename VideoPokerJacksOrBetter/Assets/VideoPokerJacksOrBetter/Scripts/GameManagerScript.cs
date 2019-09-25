@@ -83,23 +83,19 @@ public class GameManagerScript : MonoBehaviour
         switch(gameState)
         {
             case GameStates.INIT:
-                Initialize();
+                DebugUtil.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============INIT=================");
+                txtMessage.text = "Press DEAL button to START a game ";       // localize it later
+                balanceInfo.UpdateTextFiledInfo();
                 break;
             case GameStates.FIRST_DEAL:
+                DebugUtil.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============FIRST_DEAL=================");
                 cardsContainer.SetFullHand(cardsDeck.Deal(CardsContainer.HAND_SIZE), true);
                 txtMessage.text = "Select any card to HOLD and make a second DEAL";
-                
+                balanceInfo.UpdateBalanceInfo();
                 break;
         }
     }
-
-    private void Initialize()
-    {
-        DebugUtil.Instance.PrintD(CLASS_NAME, "Initialize", "==============================");
-        txtMessage.text = "Press DEAL button to START a game ";       // localize it later
-        balanceInfo.UpdateBalanceInfo();
-    }
-
+   
     //START ----------- Button click handlers -------------------------------
     public void DealBtn_OnCLick_Handler()
     {

@@ -30,6 +30,12 @@ public class BalanceInfo : MonoBehaviour
 
     public void UpdateBalanceInfo()
     {
+        creditsAmount = creditsAmount + winLossAmount - betAmount;
+        UpdateTextFiledInfo();
+    }
+
+    public void UpdateTextFiledInfo()
+    {
         txtCreditsValue.text = creditsAmount.ToString();
         txtWinLossValue.text = winLossAmount.ToString();
         txtBetValue.text = betAmount.ToString();
