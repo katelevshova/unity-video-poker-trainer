@@ -1217,6 +1217,18 @@ MonoBehaviour:
   - {fileID: 1386952616}
   - {fileID: 394552498}
   - {fileID: 626750604}
+--- !u!114 &356049065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7786218354492421825, guid: 217abb4b407cae940bc6425e79e580af,
+    type: 3}
+  m_PrefabInstance: {fileID: 883361081}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &394552496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2688,6 +2700,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63837c4709e81d44c92aa4b43da8376d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &733079756 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7786218354492421825, guid: 217abb4b407cae940bc6425e79e580af,
+    type: 3}
+  m_PrefabInstance: {fileID: 1883786690}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &840652967
@@ -5359,6 +5383,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63837c4709e81d44c92aa4b43da8376d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1430816954 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7786218354492421825, guid: 217abb4b407cae940bc6425e79e580af,
+    type: 3}
+  m_PrefabInstance: {fileID: 1590257944908336497}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1566287376
 GameObject:
   m_ObjectHideFlags: 0
@@ -5676,14 +5712,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9026ebee773e9e043aa516f0f3cbf325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creditsCurrent: 100
-  betCurrent: 5
+  gameState: 
   payoutTable: {fileID: 2000317087}
+  txtMessage: {fileID: 1151306446}
   cardsContainer: {fileID: 333261391}
   cardsDeck: {fileID: 2057953063}
+  balanceInfo: {fileID: 1821752575}
   actionBar: {fileID: 28001499}
-  gameState: 
-  txtMessage: {fileID: 1151306446}
 --- !u!114 &1756974943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5708,6 +5743,7 @@ GameObject:
   - component: {fileID: 1821752576}
   - component: {fileID: 1821752573}
   - component: {fileID: 1821752574}
+  - component: {fileID: 1821752575}
   m_Layer: 0
   m_Name: BalanceInfo
   m_TagString: Untagged
@@ -5780,6 +5816,24 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
+--- !u!114 &1821752575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821752571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08568ffd6262dab469022721894c8445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creditsAmount: 100
+  winLossAmount: 0
+  betAmount: 5
+  txtCreditsValue: {fileID: 1430816954}
+  txtBetValue: {fileID: 356049065}
+  txtWinLossValue: {fileID: 733079756}
 --- !u!222 &1821752576
 CanvasRenderer:
   m_ObjectHideFlags: 0

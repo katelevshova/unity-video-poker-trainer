@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\ActionBar.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\BalanceInfo.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\CardButton.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\CardsContainer.cs" />

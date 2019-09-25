@@ -8,17 +8,16 @@ public class GameManagerScript : MonoBehaviour
     public static GameManagerScript Instance;
     private static string CLASS_NAME = typeof(GameManagerScript).ToString();
 
-    public const int CREDITS_START_AMOUNT = 100;
-    public const int BET_MAX = 5;
-    public int creditsCurrent = CREDITS_START_AMOUNT;
-    public int betCurrent = BET_MAX;
-    public PayoutTable payoutTable;
-    public CardsContainer cardsContainer;
-    public CardsDeck cardsDeck;
-    public ActionBar actionBar;
+   
     public string gameState = GameStates.INIT;
 
+    public PayoutTable payoutTable;
     public TMPro.TextMeshProUGUI txtMessage;
+    public CardsContainer cardsContainer;
+    public CardsDeck cardsDeck;
+    public BalanceInfo balanceInfo;
+    public ActionBar actionBar;
+   
 
     public void Awake()
     {
@@ -63,6 +62,16 @@ public class GameManagerScript : MonoBehaviour
             throw new Exception("Initialize actionBar, drag ActionBarVerticalLG from Hierarchy window");
         }
 
+        if (txtMessage == null)
+        {
+            throw new Exception("Initialize txtMessage, drag it from Hierarchy window");
+        }
+
+        if (balanceInfo == null)
+        {
+            throw new Exception("Initialize balanceInfo, drag it from Hierarchy window");
+        }
+
         UpdateGameState(GameStates.INIT);
 
     }
@@ -79,6 +88,7 @@ public class GameManagerScript : MonoBehaviour
             case GameStates.FIRST_DEAL:
                 cardsContainer.SetFullHand(cardsDeck.Deal(CardsContainer.HAND_SIZE), true);
                 txtMessage.text = "Select any card to HOLD and make a second DEAL";
+                
                 break;
         }
     }
@@ -87,6 +97,7 @@ public class GameManagerScript : MonoBehaviour
     {
         DebugUtil.Instance.PrintD(CLASS_NAME, "Initialize", "==============================");
         txtMessage.text = "Press DEAL button to START a game ";       // localize it later
+        balanceInfo.UpdateBalanceInfo();
     }
 
     //START ----------- Button click handlers -------------------------------
