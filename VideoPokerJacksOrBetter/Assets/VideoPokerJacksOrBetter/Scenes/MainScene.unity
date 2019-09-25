@@ -735,6 +735,7 @@ GameObject:
   - component: {fileID: 28001497}
   - component: {fileID: 28001496}
   - component: {fileID: 28001495}
+  - component: {fileID: 28001499}
   m_Layer: 0
   m_Name: ActionBarVerticalLG
   m_TagString: Untagged
@@ -844,6 +845,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28001493}
   m_CullTransparentMesh: 0
+--- !u!114 &28001499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28001493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e971bd2744276ab42a2b51eea9e03e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnDeal: {fileID: 1752969457}
 --- !u!1 &150874359
 GameObject:
   m_ObjectHideFlags: 0
@@ -5567,7 +5581,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1752969458}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1756974942}
+        m_MethodName: DealBtn_OnCLick_Handler
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1752969458
@@ -5656,6 +5681,7 @@ MonoBehaviour:
   payoutTable: {fileID: 2000317087}
   cardsContainer: {fileID: 333261391}
   cardsDeck: {fileID: 2057953063}
+  actionBar: {fileID: 28001499}
   gameState: 
 --- !u!114 &1756974943
 MonoBehaviour:

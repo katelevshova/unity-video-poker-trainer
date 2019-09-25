@@ -15,6 +15,7 @@ public class GameManagerScript : MonoBehaviour
     public PayoutTable payoutTable;
     public CardsContainer cardsContainer;
     public CardsDeck cardsDeck;
+    public ActionBar actionBar;
     public string gameState = GameStates.INIT;
 
     public void Awake()
@@ -55,6 +56,11 @@ public class GameManagerScript : MonoBehaviour
             throw new Exception("Initialize cardsDeck, drag CardsDeck from Hierarchy window");
         }
 
+        if (actionBar == null)
+        {
+            throw new Exception("Initialize actionBar, drag ActionBarVerticalLG from Hierarchy window");
+        }
+
         UpdateGameState(GameStates.INIT);
 
     }
@@ -68,13 +74,22 @@ public class GameManagerScript : MonoBehaviour
             case GameStates.INIT:
                 Initialize();
                 break;
+            case GameStates.FIRST_DEAL:
+                cardsContainer.SetFullHand(cardsDeck.Deal(CardsContainer.HAND_SIZE), true);
+                break;
         }
     }
 
     private void Initialize()
     {
         DebugUtil.Instance.PrintD(CLASS_NAME, "Initialize", "==============================");
-        cardsContainer.SetFullHand(cardsDeck.Deal(CardsContainer.HAND_SIZE), false);
     }
 
+    //START ----------- Button click handlers -------------------------------
+    public void DealBtn_OnCLick_Handler()
+    {
+        DebugUtil.Instance.PrintD(CLASS_NAME, "DealBtn_OnCLick_Handler");
+        UpdateGameState(GameStates.FIRST_DEAL);
+    }
+    //END ----------- Button click handlers -------------------------------
 }
