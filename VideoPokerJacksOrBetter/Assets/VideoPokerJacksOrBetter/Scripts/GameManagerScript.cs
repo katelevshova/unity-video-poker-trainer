@@ -89,7 +89,9 @@ public class GameManagerScript : MonoBehaviour
                 break;
             case GameStates.FIRST_DEAL:
                 DebugUtil.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============FIRST_DEAL=================");
-                cardsContainer.SetFullHand(cardsDeck.Deal(CardsContainer.HAND_SIZE), true);
+                List<Card> firstHand = cardsDeck.Deal(CardsContainer.HAND_SIZE);
+                HandAnalyzer.GetRank(firstHand);
+                cardsContainer.SetFullHand(firstHand, true);
                 txtMessage.text = "Select any card to HOLD and make a second DEAL";
                 balanceInfo.UpdateBalanceInfo();
                 break;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HandAnalyzer
 {
-    static int GetRank(List<Card> cards)
+    public static int GetRank(List<Card> cards)
     {
 
 
@@ -15,73 +15,73 @@ public class HandAnalyzer
      * The best possible hand. Consists of Ten, Jack, Queen, King and Ace of the same suit.
      * (ace-high straight of one suit)
      */
-    private static bool IsRoyalFlush ()
+    private static int CheckRoyalFlush ()
     {
-        return true;
+        return (int)HandRank.ROYAL_FLUSH;
     }
 
     /*
      * Five consecutive cards up to king high of the same suit.
      */
-    private static bool IsStraightFlush()
+    private static int CheckStraightFlush()
     {
-        return true;
+        return (int)HandRank.STRAIGHT_FLUSH;
     }
 
     /*
      * Four cards of the same value (same rank).
      */
-    private static bool IsFourOfAKind()
+    private static int CheckFourOfAKind()
     {
-        return true;
+        return (int)HandRank.FOUR_OF_A_KIND;
     }
 
     /*
      * Three of a kind and one pair.
      */
-    private static bool IsFullHouse()
+    private static int CheckFullHouse()
     {
-        return true;
+        return (int)HandRank.FULL_HOUSE;
     }
 
     /*
      * Any five cards of the same suit.
      */
-    private static bool IsFlush()
+    private static int CheckFlush()
     {
-        return true;
+        return (int)HandRank.FLUSH;
     }
 
     /*
      * Five consecutive cards (7-8-9-10-Jack) of any mixed suits
      */
-    private static bool IsStraight()
+    private static int CheckStraight()
     {
-        return true;
+        return (int)HandRank.STRAIGHT;
     }
 
     /*
      *  Three cards of one kind (same rank) and two other cards different rank
      */
-    private static bool IsThreeOfAKind()
+    private static int CheckThreeOfAKind()
     {
-        return true;
+        return (int)HandRank.THREE_OF_A_KIND;
     }
 
     /*
      *  Two cards of one rank and another two cards of one rank (for example, 3-3 and 6-6).
      */
-    private static bool IsTwoPair()
+    private static int CheckTwoPair()
     {
-        return true;
+        return (int)HandRank.TWO_PAIR;
     }
 
     /*
      * Often the lowest paying hand. Any single pair that is jacks or higher wins
      * (Jack-Jack, Queen-Queen, King-King, Ace-Ace).
      */
-    private static bool IsJacksOrBetter()
+    private static int CheckJacksOrBetter()
     {
-        return true;
+        return (int)HandRank.JACKS_OR_BETTER;
     }
  }
