@@ -19,42 +19,99 @@ public class PayoutTable : MonoBehaviour
 
         foreach (Transform child in allTransforms)
         {
-            if (child.gameObject.name == "Hands")
-            {
-                Transform[] handTransforms = GetComponentsInChildren<Transform>(true);
-
-                foreach (Transform handChild in handTransforms)
+                if (child.gameObject.name == "Hands")
                 {
-                    string searchLabel = "txtMP_Element_";
-                    string goName = handChild.gameObject.name;
+                    Transform[] handTransforms = child.GetComponentsInChildren<Transform>(true);
 
-                    if(goName.Contains(searchLabel))
+                    foreach (Transform handChild in handTransforms)
                     {
-                        // int counter  int counter
+                        string searchLabel = "txtMP_Element_";
+                        string goName = handChild.gameObject.name;
 
-                        //   int start = goName.IndexOf(searchLabel) + searchLabel.Length;
-                        //   int end = goName.Length;
-                        //string goNameNumberStr = goName.Substring(start, end - start);
+                        if(goName.Contains(searchLabel))
+                        {
+                            string handNumberString = Regex.Match(goName, @"\d+").Value;
+                            int handNumber = int.Parse(handNumberString);
 
-                        //char lastChar = goName[goName.Length - 1];
+                            TMPro.TextMeshProUGUI txt = handChild.gameObject.GetComponent<TMPro.TextMeshProUGUI>();
 
-                        string handNumberString = Regex.Match(goName, @"\d+").Value;
-                        int handNumber = int.Parse(handNumberString);
+                           txt.text=  payoutTableModel.payouts[handNumber].handName;
 
 
-                        TMPro.TextMeshProUGUI txt = handChild.gameObject.GetComponent<TMPro.TextMeshProUGUI>();
 
-                       // int hand = ;
+                        }
+                    }
+                }
 
-                       // string payoutValue = payoutTableModel.payouts[0];
+                if (child.gameObject.name == "Coin_1")
+                {
+                    Transform[] handTransforms = child.GetComponentsInChildren<Transform>(true);
 
-                       // txt.text = payoutValue;
+                    foreach (Transform handChild in handTransforms)
+                    {
+                        string searchLabel = "txtMP_Element_";
+                        string goName = handChild.gameObject.name;
 
-                        // txt.text = payoutTableModel.payouts[];
+                        if (goName.Contains(searchLabel))
+                        {
+                            string handNumberString = Regex.Match(goName, @"\d+").Value;
+                            int handNumber = int.Parse(handNumberString);
+
+                            TMPro.TextMeshProUGUI txt = handChild.gameObject.GetComponent<TMPro.TextMeshProUGUI>();
+
+                            txt.text = payoutTableModel.payouts[handNumber].coin1.ToString();
+
+
+
+                        }
                     }
                 }
             }
+    }
+
+    private void InitColumn(string columnName, Transform child)
+    {
+        if (child.gameObject.name == columnName)
+        {
+            Transform[] handTransforms = child.GetComponentsInChildren<Transform>(true);
+
+            foreach (Transform txtChild in handTransforms)
+            {
+                string searchLabel = "txtMP_Element_";
+                string goName = txtChild.gameObject.name;
+
+                if (goName.Contains(searchLabel))
+                {
+                    string handNumberString = Regex.Match(goName, @"\d+").Value;
+                    int handNumber = int.Parse(handNumberString);
+
+                    TMPro.TextMeshProUGUI txt = txtChild.gameObject.GetComponent<TMPro.TextMeshProUGUI>();
+
+                    txt.text = GetElementText(columnName, handNumber);//payoutTableModel.payouts[handNumber].handName;
+                }
+            }
         }
+    }
+
+    private string GetElementText(string columnName, int handNumber)
+    {
+        switch(columnName)
+        {
+            case "Hand":
+                return payoutTableModel.payouts[handNumber].handName;
+            case "Coin1":
+                return payoutTableModel.payouts[handNumber].coin1.ToString();
+            case "Coin2":
+                return payoutTableModel.payouts[handNumber].coin2.ToString();
+            case "Coin3":
+                return payoutTableModel.payouts[handNumber].coin3.ToString();
+            case "Coin4":
+                return payoutTableModel.payouts[handNumber].coin4.ToString();
+            case "Coin5":
+                return payoutTableModel.payouts[handNumber].coin5.ToString();
+        }
+
+        return "undefined";
     }
 
     // Update is called once per frame
