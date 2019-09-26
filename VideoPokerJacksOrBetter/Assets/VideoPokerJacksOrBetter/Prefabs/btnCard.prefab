@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 2665040943140860148}
   - component: {fileID: 4761251973256116200}
   - component: {fileID: 5563017182077016101}
+  - component: {fileID: 8220396790789604560}
   m_Layer: 0
   m_Name: btnCard
   m_TagString: Untagged
@@ -220,6 +221,19 @@ MonoBehaviour:
   m_FlexibleWidth: 1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
+--- !u!114 &8220396790789604560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7764715841240303022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63837c4709e81d44c92aa4b43da8376d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: 
 --- !u!1 &8158394566311307482
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +246,7 @@ GameObject:
   - component: {fileID: 314883314220742749}
   - component: {fileID: 8807343035249098547}
   m_Layer: 0
-  m_Name: TextMeshPro Text
+  m_Name: txtHold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

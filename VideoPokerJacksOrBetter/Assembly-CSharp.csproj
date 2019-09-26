@@ -60,7 +60,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\NewBehaviourScript.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\ActionBar.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\BalanceInfo.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\Card.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\CardButton.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\CardsContainer.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\CardsDeck.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\CardsRank.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\Suit.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\DebugUtil.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\GameManagerScript.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\GameStates.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\HandNameConstants.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\PayoutRow.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\PayoutTable.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\PayoutTableModel.cs" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Projects/Unity/MobilityWare/VideoPoker/VideoPokerJacksOrBetter/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
