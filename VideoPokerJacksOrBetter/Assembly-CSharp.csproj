@@ -71,7 +71,8 @@
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\DebugUtil.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\GameManagerScript.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\GameStates.cs" />
-    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\HandCombinationsRank.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\HandNameConstants.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\PayoutRow.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\PayoutTable.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\PayoutTableModel.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
