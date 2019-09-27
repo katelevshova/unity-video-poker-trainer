@@ -11,12 +11,26 @@ public class HandAnalyzer
     private static bool isHandFormFlush = false;
 
     private static List<Card> cardsHand;
+    private static List<Card> copyHand;
 
     public static int GetRank(List<Card> cards)
     {
         cardsHand = cards;
 
-        isRoyalFlush();
+        //COPY and SORT
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "PRINT SCREEN HAND ");
+        CardsDeck.PrintCards(cardsHand);
+
+        copyHand = CardsDeck.GetCopy(cardsHand);
+        copyHand.Sort();
+
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "PRINT SORTED HAND ");
+        CardsDeck.PrintCards(copyHand);
+
+
+        bool isRoyalFlash = isRoyalFlush();
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "isRoyalFlash= "+ isRoyalFlash);
+
 
         return -1; // Return ID of winning hand combination, or - 1 if losing 
     }
@@ -34,24 +48,14 @@ public class HandAnalyzer
         if (!isHandFormFlush)
             return false;
 
-        //2. SORT
-        DebugUtil.Instance.PrintD(CLASS_NAME, "isRoyalFlush", "PRINT SCREEN HAND ");
-        CardsDeck.PrintCards(cardsHand);
-
-        List<Card> copiedHand = CardsDeck.GetCopy(cardsHand);
-        copiedHand.Sort();
-
-        DebugUtil.Instance.PrintD(CLASS_NAME, "isRoyalFlush", "PRINT SORTED HAND ");
-        CardsDeck.PrintCards(copiedHand);
-
-        //3. CHECK if form straight
+        //3. CHECK if form straight for sorted hand
         isHandFormStraight = isStraight();
 
         if (!isHandFormStraight)
             return false;
 
-        //4. CHECK if last card is ACE
-        bool isAce = (copiedHand[copiedHand.Count-1].rank.Id() == (int)CardsRank.IDs.Ace);
+        //4. CHECK if last card is ACE for sorted hand
+        bool isAce = (copyHand[copyHand.Count-1].rank.Id() == (int)CardsRank.IDs.Ace);
 
 
         return (isHandFormFlush && isHandFormStraight && isAce);
@@ -105,6 +109,17 @@ public class HandAnalyzer
      */
     private static bool isStraight()
     {
+        // use sorted copy
+        for (int i = 0; i < copyHand.Count; i++)
+        {
+            if (i != copyHand.Count - 1)
+            {
+                if (copyHand[i].rank.Value() != copyHand[i + 1].rank.Value() - 1)
+                {
+                    return false;
+                }
+            }
+        }
         return true;
     }
 
