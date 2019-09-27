@@ -27,35 +27,36 @@ public class HandAnalyzer
      */
     private static bool isRoyalFlush ()
     {
-        // check if 5 cards of the same suit - check flush
+        //1. CHECK if 5 cards of the same suit - check flush
 
-        //isHandFormFlush = isFlush();
+        isHandFormFlush = isFlush();
 
-        // if (!isHandFormFlush)
-        //     return false;
+        if (!isHandFormFlush)
+            return false;
 
-
-
-        List<Card> cardsHandCopy = new List<Card>();
-
-        foreach(var card in cardsHand)
-        {
-            cardsHandCopy.Add((Card)card.Clone());
-        }
-
-     
-
-        cardsHandCopy.Sort();
-
-        DebugUtil.Instance.PrintD(CLASS_NAME, "isRoyalFlush", "PRINT SORTED HAND ");
-        CardsDeck.PrintCards(cardsHandCopy);
+        //2. SORT
         DebugUtil.Instance.PrintD(CLASS_NAME, "isRoyalFlush", "PRINT SCREEN HAND ");
         CardsDeck.PrintCards(cardsHand);
 
-        // check first and last cards
+        List<Card> copiedHand = CardsDeck.GetCopy(cardsHand);
+        copiedHand.Sort();
 
-        return true;
+        DebugUtil.Instance.PrintD(CLASS_NAME, "isRoyalFlush", "PRINT SORTED HAND ");
+        CardsDeck.PrintCards(copiedHand);
+
+        //3. CHECK if form straight
+        isHandFormStraight = isStraight();
+
+        if (!isHandFormStraight)
+            return false;
+
+        //4. CHECK if last card is ACE
+        bool isAce = (copiedHand[copiedHand.Count-1].rank.Id() == (int)CardsRank.IDs.Ace);
+
+
+        return (isHandFormFlush && isHandFormStraight && isAce);
     }
+
 
     /*
      * Five consecutive cards up to king high of the same suit.

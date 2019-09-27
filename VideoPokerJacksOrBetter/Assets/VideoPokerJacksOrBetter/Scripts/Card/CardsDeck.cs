@@ -130,4 +130,16 @@ public class CardsDeck : MonoBehaviour
             DebugUtil.Instance.PrintD(CLASS_NAME, "PrintCards", card.ToString());
         }
     }
+
+    public static List<Card> GetCopy(List<Card> cards)
+    {
+        List<Card> copy = new List<Card>();
+
+        foreach (var card in cards)
+        {
+            copy.Add((Card)card.Clone());
+        }
+
+        return copy;
+    }
 }
