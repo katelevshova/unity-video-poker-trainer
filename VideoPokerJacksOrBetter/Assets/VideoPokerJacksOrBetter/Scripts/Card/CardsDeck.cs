@@ -60,7 +60,7 @@ public class CardsDeck : MonoBehaviour
         DebugUtil.Instance.PrintD(CLASS_NAME, "InitRankList", "-------------------------------------------------------------");
         foreach (CardsRank rank in rankList)
         {
-            DebugUtil.Instance.PrintD(CLASS_NAME, "InitRankList", "rank.name= " + rank.name + ", rank.imgName= " + rank.imgName);
+            DebugUtil.Instance.PrintD(CLASS_NAME, "InitRankList", "rank.name= " + rank.name + ", rank.imgName= " + rank.imgName + ", rank._value= " + rank.Value());
         }
     }
 
@@ -119,4 +119,15 @@ public class CardsDeck : MonoBehaviour
         }
         return returnCards;
     }
- }
+
+
+    public static void PrintCards(List<Card> cards)
+    {
+        DebugUtil.Instance.PrintD(CLASS_NAME, "PrintCards", "_______________________________");
+
+        foreach (Card card in cards)
+        {
+            DebugUtil.Instance.PrintD(CLASS_NAME, "PrintCards", card.ToString());
+        }
+    }
+}

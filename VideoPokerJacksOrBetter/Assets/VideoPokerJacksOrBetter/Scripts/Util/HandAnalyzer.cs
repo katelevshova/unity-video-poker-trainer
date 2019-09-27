@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class HandAnalyzer
 {
+    private static string CLASS_NAME = typeof(HandAnalyzer).ToString();
+    public const int LOSE_HAND = -1;
+
+    private static bool isHandFormStraight = false;
+    private static bool isHandFormFlush = false;
+
+    private static List<Card> cardsHand;
+
     public static int GetRank(List<Card> cards)
     {
+        cardsHand = cards;
 
+        isRoyalFlush();
 
         return -1; // Return ID of winning hand combination, or - 1 if losing 
     }
@@ -15,15 +25,42 @@ public class HandAnalyzer
      * The best possible hand. Consists of Ten, Jack, Queen, King and Ace of the same suit.
      * (ace-high straight of one suit)
      */
-    private static int CheckRoyalFlush ()
+    private static bool isRoyalFlush ()
     {
-        return (int)HandRank.ROYAL_FLUSH;
+        // check if 5 cards of the same suit - check flush
+
+        //isHandFormFlush = isFlush();
+
+        // if (!isHandFormFlush)
+        //     return false;
+
+
+
+        List<Card> cardsHandCopy = new List<Card>();
+
+        foreach(var card in cardsHand)
+        {
+            cardsHandCopy.Add((Card)card.Clone());
+        }
+
+     
+
+        cardsHandCopy.Sort();
+
+        DebugUtil.Instance.PrintD(CLASS_NAME, "isRoyalFlush", "PRINT SORTED HAND ");
+        CardsDeck.PrintCards(cardsHandCopy);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "isRoyalFlush", "PRINT SCREEN HAND ");
+        CardsDeck.PrintCards(cardsHand);
+
+        // check first and last cards
+
+        return true;
     }
 
     /*
      * Five consecutive cards up to king high of the same suit.
      */
-    private static int CheckStraightFlush()
+    private static int StraightFlush()
     {
         return (int)HandRank.STRAIGHT_FLUSH;
     }
@@ -47,17 +84,27 @@ public class HandAnalyzer
     /*
      * Any five cards of the same suit.
      */
-    private static int CheckFlush()
+    private static bool isFlush()
     {
-        return (int)HandRank.FLUSH;
+        for (int i = 0; i < cardsHand.Count; i++)
+        {
+            if (i != cardsHand.Count - 1)
+            {
+                if(cardsHand[i].suit.name != cardsHand[i+1].suit.name)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     /*
      * Five consecutive cards (7-8-9-10-Jack) of any mixed suits
      */
-    private static int CheckStraight()
+    private static bool isStraight()
     {
-        return (int)HandRank.STRAIGHT;
+        return true;
     }
 
     /*
