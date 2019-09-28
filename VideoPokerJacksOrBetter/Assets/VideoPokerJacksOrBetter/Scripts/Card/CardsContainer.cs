@@ -40,7 +40,7 @@ public class CardsContainer : MonoBehaviour
         foreach(CardButton cardBtn in cardButtons)
         {
             cardBtn.card = cardHand[cardNumber];
-            DebugUtil.Instance.PrintD(CLASS_NAME, "SetFullHand", "cardBtn.name= " + cardBtn.name + ", cardBtn.imgFileName= " + cardBtn.card.imgFileName);
+           // DebugUtil.Instance.PrintD(CLASS_NAME, "SetFullHand", "cardBtn.name= " + cardBtn.name + ", cardBtn.imgFileName= " + cardBtn.card.imgFileName);
 
             cardBtn.ShowFaceSide(isGameStarted);
 

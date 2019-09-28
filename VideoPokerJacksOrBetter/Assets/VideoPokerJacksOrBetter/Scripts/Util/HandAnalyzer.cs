@@ -29,14 +29,14 @@ public class HandAnalyzer
 
         //ROYAL_FLUSH
         bool isRoyalFlush = IsRoyalFlush();
-        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "isRoyalFlush= " + isRoyalFlush);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for ROYAL_FLUSH= " + isRoyalFlush);
 
         if (isRoyalFlush)
             return (int)HandRank.ROYAL_FLUSH;
 
         //STRAIGHT_FLUSH
         bool isStraightFlush = IsStraightFlush();
-        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "isStraightFlush= " + isStraightFlush);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for STRAIGHT_FLUSH= " + isStraightFlush);
 
         if (isStraightFlush)
             return (int)HandRank.STRAIGHT_FLUSH;
