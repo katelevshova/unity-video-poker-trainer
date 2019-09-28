@@ -98,8 +98,10 @@ public class GameManagerScript : MonoBehaviour
                 break;
             case GameStates.SECOND_DEAL:
                 DebugUtil.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============SECOND_DEAL=================");
+
                 //get rank from a hand which includes held cards
-                combinationRank = 2;//HandAnalyzer.GetRank(currentHand);
+                cardsContainer.DisableAllCardButtons();
+                combinationRank = HandAnalyzer.GetRank(currentHand);
                 if(combinationRank == HandAnalyzer.LOSE_HAND)
                 {
                     UpdateGameState(GameStates.LOST);

@@ -47,4 +47,13 @@ public class CardsContainer : MonoBehaviour
             cardNumber++;
         }
     }
+
+    public void DisableAllCardButtons()
+    {
+        DebugUtil.Instance.PrintD(CLASS_NAME, "DisableAllCardButtons");
+        foreach (CardButton cardBtn in cardButtons)
+        {
+            cardBtn.SetEnableButton(false);
+        }
+    }
 }

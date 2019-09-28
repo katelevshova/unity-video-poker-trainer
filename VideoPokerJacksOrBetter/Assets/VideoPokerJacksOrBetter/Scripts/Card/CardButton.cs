@@ -11,12 +11,12 @@ public class CardButton : MonoBehaviour
 
     public Card card;
     private Image image;
+    private Button button;
     private TMPro.TextMeshProUGUI txtHold;
 
     // Start is called before the first frame update
     void Start()
     {
-        // get all children of ActorsContainer including disabled
         Transform[] allTransforms = GetComponentsInChildren<Transform>(true);
 
         foreach (Transform child in allTransforms)
@@ -24,6 +24,7 @@ public class CardButton : MonoBehaviour
             if (child.gameObject.name == "Button")
             {
                 image = child.gameObject.GetComponent<Image>();
+                button = child.gameObject.GetComponent<Button>();
             }
             if (child.gameObject.name == "txtHold")
             {
@@ -32,13 +33,11 @@ public class CardButton : MonoBehaviour
         }
 
         txtHold.text = "";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        SetEnableButton(false);
         
     }
+    
+    //TODO: remove possible not necessary parameter
     public void ShowFaceSide(Boolean flag)
     {
         //if(flag)
@@ -48,7 +47,47 @@ public class CardButton : MonoBehaviour
             Sprite sprite = Resources.Load<Sprite>("Sprites/Cards/" + card.imgFileName);
             image.sprite = sprite;
             DebugUtil.Instance.PrintD(CLASS_NAME, "ShowFaceSide", "spriteName= " + image.sprite.name);
+
+            txtHold.text = "";
+            SetEnableButton(true);
        // }
+
+    }
+
+    public void CardBtn_OnCLick_Handler()
+    {
+        DebugUtil.Instance.PrintD(CLASS_NAME, "CardBtn_OnCLick_Handler", "gameState= " + GameManagerScript.Instance.gameState);
+
+        if(GameManagerScript.Instance.gameState == GameStates.FIRST_DEAL)
+        {
+            //TODO: hold a card here
+            txtHold.text = "HOLD";
+            SetEnableButton(false);
+        }
+
+        /*
+        switch (GameManagerScript.Instance.gameState)
+        {
+            case GameStates.FIRST_DEAL:
+                //TODO: hold a card here
+                txtHold.text = "HOLD";
+                break;
+           case GameStates.SECOND_DEAL:
+            case GameStates.WIN:
+            case GameStates.LOST:
+                SetEnableButton(false);   
+                break;    
+        }
+    */
+    }
+
+    public void SetEnableButton(bool flag)
+    {
+        button.interactable = flag;
+    }
+
+    private void HoldCard()
+    {
 
     }
 }
