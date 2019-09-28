@@ -13,8 +13,7 @@ public class HandAnalyzer
     private static List<Card> cardsHand;
     private static List<Card> copyHand;
 
-    // private static int sameRankCounter = 0;
-    private static Dictionary<string, int> sameRankStats;
+    private static Dictionary<int, int> sameRankStats;
 
     public static int GetRank(List<Card> cards)
     {
@@ -42,7 +41,7 @@ public class HandAnalyzer
         if (isStraightFlush)
             return (int)HandRank.STRAIGHT_FLUSH;
 
-        sameRankStats = new Dictionary<string, int>(); //example: key="Queen", value=3
+        sameRankStats = new Dictionary<int, int>(); //example: key= rank.value, value= 3 - simple counter
 
         //FOUR_OF_A_KIND
         bool isFourOfKind = IsFourOfAKind();
@@ -68,12 +67,23 @@ public class HandAnalyzer
             return (int)HandRank.STRAIGHT;
 
         //THREE_OF_A_KIND
+        //Three cards of one kind (same rank) and two other cards different rank
         bool isThreeOfKind = (sameRankStats.ContainsValue(3));
         DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for THREE_OF_A_KIND= " + isThreeOfKind);
+        if (isThreeOfKind)
+            return (int)HandRank.THREE_OF_A_KIND;
 
         //TWO_PAIR
+        bool isTwoPair = IsTwoPair();
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for TWO_PAIR= " + isTwoPair);
+        if (isTwoPair)
+            return (int)HandRank.TWO_PAIR;
 
         //JACKS_OR_BETTER
+        bool isJacksOrBetter = IsJacksOrBetter();
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for JACKS_OR_BETTER= " + isJacksOrBetter);
+        if (isJacksOrBetter)
+            return (int)HandRank.JACKS_OR_BETTER;
 
         return -1; // Return ID of winning hand combination, or - 1 if losing 
     }
@@ -100,10 +110,8 @@ public class HandAnalyzer
         //4. CHECK if last card is ACE for sorted hand
         bool isAce = (copyHand[copyHand.Count-1].rank.Id() == (int)CardsRank.IDs.Ace);
 
-
         return (isHandFormFlush && isHandFormStraight && isAce);
     }
-
 
     /*
      * Five consecutive cards up to king high of the same suit.
@@ -156,13 +164,13 @@ public class HandAnalyzer
 
         foreach (Card card in copyHand)
         {
-            if (sameRankStats.ContainsKey(card.rank.name))
+            if (sameRankStats.ContainsKey(card.rank.Value()))
             {
-                sameRankStats[card.rank.name] = sameRankCounter++;
+                sameRankStats[card.rank.Value()] = sameRankCounter++;
             }
             else
             {
-                sameRankStats.Add(card.rank.name, 1);
+                sameRankStats.Add(card.rank.Value(), 1);
             }
         }
 
@@ -170,18 +178,9 @@ public class HandAnalyzer
     }
 
     /*
-     * Three of a kind and one pair.
-     */
-  /*  private static bool IsFullHouse()
-    {
-        // check if had "three of a kind" and a pair
-        return (sameRankStats.ContainsValue(3) && sameRankStats.ContainsValue(2));
-    }     */
-
-    /*
      * Any five cards of the same suit.
      */
-        private static bool IsFlush()
+    private static bool IsFlush()
     {
         for (int i = 0; i < copyHand.Count; i++)
         {
@@ -216,27 +215,34 @@ public class HandAnalyzer
     }
 
     /*
-     *  Three cards of one kind (same rank) and two other cards different rank
-     */
-    private static int CheckThreeOfAKind()
-    {
-        return (int)HandRank.THREE_OF_A_KIND;
-    }
-
-    /*
      *  Two cards of one rank and another two cards of one rank (for example, 3-3 and 6-6).
      */
-    private static int CheckTwoPair()
+    private static bool IsTwoPair()
     {
-        return (int)HandRank.TWO_PAIR;
+        int counterTwoes = 0;
+        foreach (var item in sameRankStats)
+        {
+            if(item.Value == 2)
+            {
+                counterTwoes++;
+            }
+        }
+
+        return (counterTwoes == 2);
     }
 
     /*
      * Often the lowest paying hand. Any single pair that is jacks or higher wins
      * (Jack-Jack, Queen-Queen, King-King, Ace-Ace).
      */
-    private static int CheckJacksOrBetter()
+    private static bool IsJacksOrBetter()
     {
-        return (int)HandRank.JACKS_OR_BETTER;
+        foreach (var item in sameRankStats)
+        {
+            if (item.Value == 2 && item.Key >= (int)CardsRank.Values.Jack)
+                return true;
+        }
+
+        return false;
     }
  }
