@@ -27,10 +27,21 @@ public class HandAnalyzer
         DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "PRINT SORTED HAND ");
         CardsDeck.PrintCards(copyHand);
 
+        //ROYAL_FLUSH
+        bool isRoyalFlush = IsRoyalFlush();
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "isRoyalFlush= " + isRoyalFlush);
 
-        bool isRoyalFlash = isRoyalFlush();
-        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "isRoyalFlash= "+ isRoyalFlash);
+        if (isRoyalFlush)
+            return (int)HandRank.ROYAL_FLUSH;
 
+        //STRAIGHT_FLUSH
+        bool isStraightFlush = IsStraightFlush();
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "isStraightFlush= " + isStraightFlush);
+
+        if (isStraightFlush)
+            return (int)HandRank.STRAIGHT_FLUSH;
+
+        //FOUR_OF_A_KIND
 
         return -1; // Return ID of winning hand combination, or - 1 if losing 
     }
@@ -39,7 +50,7 @@ public class HandAnalyzer
      * The best possible hand. Consists of Ten, Jack, Queen, King and Ace of the same suit.
      * (ace-high straight of one suit)
      */
-    private static bool isRoyalFlush ()
+    private static bool IsRoyalFlush ()
     {
         //1. CHECK if 5 cards of the same suit - check flush
 
@@ -65,9 +76,26 @@ public class HandAnalyzer
     /*
      * Five consecutive cards up to king high of the same suit.
      */
-    private static int StraightFlush()
+    private static bool IsStraightFlush()
     {
-        return (int)HandRank.STRAIGHT_FLUSH;
+        //1. CHECK if 5 cards of the same suit - check flush
+
+        isHandFormFlush = isFlush();
+
+        if (!isHandFormFlush)
+            return false;
+
+        //3. CHECK if form straight for sorted hand
+        isHandFormStraight = isStraight();
+
+        if (!isHandFormStraight)
+            return false;
+
+        //4. CHECK if last card IS NOT ACE for sorted hand
+        bool isNotAce = (copyHand[copyHand.Count - 1].rank.Id() != (int)CardsRank.IDs.Ace);
+
+        return (isHandFormFlush && isHandFormStraight && isNotAce);
+
     }
 
     /*
