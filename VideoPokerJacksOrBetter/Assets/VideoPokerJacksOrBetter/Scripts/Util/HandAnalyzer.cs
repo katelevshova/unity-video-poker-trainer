@@ -42,6 +42,13 @@ public class HandAnalyzer
             return (int)HandRank.STRAIGHT_FLUSH;
 
         //FOUR_OF_A_KIND
+        bool isFourOfKind = IsFourOfAKind();
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for FOUR_OF_A_KIND= " + isFourOfKind);
+
+        if (isFourOfKind)
+            return (int)HandRank.FOUR_OF_A_KIND;
+
+        //FULL_HOUSE
 
         return -1; // Return ID of winning hand combination, or - 1 if losing 
     }
@@ -101,9 +108,23 @@ public class HandAnalyzer
     /*
      * Four cards of the same value (same rank).
      */
-    private static int CheckFourOfAKind()
+    private static bool IsFourOfAKind()
     {
-        return (int)HandRank.FOUR_OF_A_KIND;
+        int counter = 0;
+
+        //use sorted hand, Q-Q-Q-Q-A or 2-10-10-10-10
+        for (int i = 0; i < copyHand.Count; i++)
+        {
+            if (i != copyHand.Count - 1)
+            {
+                if (copyHand[i].rank.Value() == copyHand[i + 1].rank.Value())
+                {
+                    counter++;
+                }
+            }
+        }
+
+        return (counter == 4);
     }
 
     /*
@@ -119,11 +140,11 @@ public class HandAnalyzer
      */
     private static bool isFlush()
     {
-        for (int i = 0; i < cardsHand.Count; i++)
+        for (int i = 0; i < copyHand.Count; i++)
         {
-            if (i != cardsHand.Count - 1)
+            if (i != copyHand.Count - 1)
             {
-                if(cardsHand[i].suit.name != cardsHand[i+1].suit.name)
+                if(copyHand[i].suit.name != copyHand[i+1].suit.name)
                 {
                     return false;
                 }
