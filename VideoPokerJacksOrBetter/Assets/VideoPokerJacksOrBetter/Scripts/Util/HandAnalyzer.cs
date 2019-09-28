@@ -13,7 +13,8 @@ public class HandAnalyzer
     private static List<Card> cardsHand;
     private static List<Card> copyHand;
 
-    private static int sameRankCounter = 0;
+    // private static int sameRankCounter = 0;
+    private static Dictionary<string, int> sameRankStats;
 
     public static int GetRank(List<Card> cards)
     {
@@ -41,6 +42,8 @@ public class HandAnalyzer
         if (isStraightFlush)
             return (int)HandRank.STRAIGHT_FLUSH;
 
+        sameRankStats = new Dictionary<string, int>(); //example: key="Queen", value=3
+
         //FOUR_OF_A_KIND
         bool isFourOfKind = IsFourOfAKind();
         DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for FOUR_OF_A_KIND= " + isFourOfKind);
@@ -48,7 +51,8 @@ public class HandAnalyzer
             return (int)HandRank.FOUR_OF_A_KIND;
 
         //FULL_HOUSE
-        bool isFullHouse = IsFullHouse();
+        // check if had "three of a kind" and a pair
+        bool isFullHouse = (sameRankStats.ContainsValue(3) && sameRankStats.ContainsValue(2));
         DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for FULL_HOUSE= " + isFullHouse);
         if (isFullHouse)
             return (int)HandRank.FULL_HOUSE;
@@ -64,10 +68,12 @@ public class HandAnalyzer
             return (int)HandRank.STRAIGHT;
 
         //THREE_OF_A_KIND
-        bool isThreeOfKind = (sameRankCounter == 3);
+        bool isThreeOfKind = (sameRankStats.ContainsValue(3));
         DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for THREE_OF_A_KIND= " + isThreeOfKind);
 
         //TWO_PAIR
+
+        //JACKS_OR_BETTER
 
         return -1; // Return ID of winning hand combination, or - 1 if losing 
     }
@@ -129,6 +135,7 @@ public class HandAnalyzer
      */
     private static bool IsFourOfAKind()
     {
+        /*
         sameRankCounter = 0;
 
         //use sorted hand, Q-Q-Q-Q-A or 2-10-10-10-10
@@ -143,25 +150,38 @@ public class HandAnalyzer
             }
         }
 
-        return (sameRankCounter == 4);
+        return (sameRankCounter == 4); */
+
+        int sameRankCounter = 0; ;
+
+        foreach (Card card in copyHand)
+        {
+            if (sameRankStats.ContainsKey(card.rank.name))
+            {
+                sameRankStats[card.rank.name] = sameRankCounter++;
+            }
+            else
+            {
+                sameRankStats.Add(card.rank.name, 1);
+            }
+        }
+
+        return sameRankStats.ContainsValue(4);
     }
 
     /*
      * Three of a kind and one pair.
      */
-    private static bool IsFullHouse()
+  /*  private static bool IsFullHouse()
     {
-        // 1. check if had "three of a kind"
-
-
-        //2. check if has "pair" 
-        return true;
-    }
+        // check if had "three of a kind" and a pair
+        return (sameRankStats.ContainsValue(3) && sameRankStats.ContainsValue(2));
+    }     */
 
     /*
      * Any five cards of the same suit.
      */
-    private static bool IsFlush()
+        private static bool IsFlush()
     {
         for (int i = 0; i < copyHand.Count; i++)
         {

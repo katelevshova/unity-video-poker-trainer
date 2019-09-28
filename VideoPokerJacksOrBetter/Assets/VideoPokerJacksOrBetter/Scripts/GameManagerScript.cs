@@ -90,10 +90,19 @@ public class GameManagerScript : MonoBehaviour
             case GameStates.FIRST_DEAL:
                 DebugUtil.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============FIRST_DEAL=================");
                 List<Card> firstHand = cardsDeck.Deal(CardsContainer.HAND_SIZE);
-                HandAnalyzer.GetRank(firstHand);
+                HandAnalyzer.GetRank(firstHand);        // move to SecondDeal 
                 cardsContainer.SetFullHand(firstHand, true);
                 txtMessage.text = "Select any card to HOLD and make a second DEAL";
                 balanceInfo.UpdateBalanceInfo();
+                break;
+            case GameStates.SECOND_DEAL:
+                //get rank from a hand which includes held cards
+                break;
+            case GameStates.WIN:
+                //update txtMessage, win amount and credits
+                break;
+            case GameStates.LOST:
+                //update txtMessage, win amount and credits
                 break;
         }
     }
