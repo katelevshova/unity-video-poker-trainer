@@ -13,6 +13,8 @@ public class HandAnalyzer
     private static List<Card> cardsHand;
     private static List<Card> copyHand;
 
+    private static int sameRankCounter = 0;
+
     public static int GetRank(List<Card> cards)
     {
         cardsHand = cards;
@@ -30,25 +32,42 @@ public class HandAnalyzer
         //ROYAL_FLUSH
         bool isRoyalFlush = IsRoyalFlush();
         DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for ROYAL_FLUSH= " + isRoyalFlush);
-
         if (isRoyalFlush)
             return (int)HandRank.ROYAL_FLUSH;
 
         //STRAIGHT_FLUSH
         bool isStraightFlush = IsStraightFlush();
         DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for STRAIGHT_FLUSH= " + isStraightFlush);
-
         if (isStraightFlush)
             return (int)HandRank.STRAIGHT_FLUSH;
 
         //FOUR_OF_A_KIND
         bool isFourOfKind = IsFourOfAKind();
         DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for FOUR_OF_A_KIND= " + isFourOfKind);
-
         if (isFourOfKind)
             return (int)HandRank.FOUR_OF_A_KIND;
 
         //FULL_HOUSE
+        bool isFullHouse = IsFullHouse();
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for FULL_HOUSE= " + isFullHouse);
+        if (isFullHouse)
+            return (int)HandRank.FULL_HOUSE;
+
+        //FLUSH
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for FLUSH= " + isHandFormFlush);
+        if (isHandFormFlush)
+            return (int)HandRank.FLUSH;
+
+        //STRAIGHT
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for STRAIGHT= " + isHandFormStraight);
+        if (isHandFormStraight)
+            return (int)HandRank.STRAIGHT;
+
+        //THREE_OF_A_KIND
+        bool isThreeOfKind = (sameRankCounter == 3);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for THREE_OF_A_KIND= " + isThreeOfKind);
+
+        //TWO_PAIR
 
         return -1; // Return ID of winning hand combination, or - 1 if losing 
     }
@@ -61,13 +80,13 @@ public class HandAnalyzer
     {
         //1. CHECK if 5 cards of the same suit - check flush
 
-        isHandFormFlush = isFlush();
+        isHandFormFlush = IsFlush();
 
         if (!isHandFormFlush)
             return false;
 
         //3. CHECK if form straight for sorted hand
-        isHandFormStraight = isStraight();
+        isHandFormStraight = IsStraight();
 
         if (!isHandFormStraight)
             return false;
@@ -87,13 +106,13 @@ public class HandAnalyzer
     {
         //1. CHECK if 5 cards of the same suit - check flush
 
-        isHandFormFlush = isFlush();
+        isHandFormFlush = IsFlush();
 
         if (!isHandFormFlush)
             return false;
 
         //3. CHECK if form straight for sorted hand
-        isHandFormStraight = isStraight();
+        isHandFormStraight = IsStraight();
 
         if (!isHandFormStraight)
             return false;
@@ -110,7 +129,7 @@ public class HandAnalyzer
      */
     private static bool IsFourOfAKind()
     {
-        int counter = 0;
+        sameRankCounter = 0;
 
         //use sorted hand, Q-Q-Q-Q-A or 2-10-10-10-10
         for (int i = 0; i < copyHand.Count; i++)
@@ -119,26 +138,30 @@ public class HandAnalyzer
             {
                 if (copyHand[i].rank.Value() == copyHand[i + 1].rank.Value())
                 {
-                    counter++;
+                    sameRankCounter++;
                 }
             }
         }
 
-        return (counter == 4);
+        return (sameRankCounter == 4);
     }
 
     /*
      * Three of a kind and one pair.
      */
-    private static int CheckFullHouse()
+    private static bool IsFullHouse()
     {
-        return (int)HandRank.FULL_HOUSE;
+        // 1. check if had "three of a kind"
+
+
+        //2. check if has "pair" 
+        return true;
     }
 
     /*
      * Any five cards of the same suit.
      */
-    private static bool isFlush()
+    private static bool IsFlush()
     {
         for (int i = 0; i < copyHand.Count; i++)
         {
@@ -156,7 +179,7 @@ public class HandAnalyzer
     /*
      * Five consecutive cards (7-8-9-10-Jack) of any mixed suits
      */
-    private static bool isStraight()
+    private static bool IsStraight()
     {
         // use sorted copy
         for (int i = 0; i < copyHand.Count; i++)
