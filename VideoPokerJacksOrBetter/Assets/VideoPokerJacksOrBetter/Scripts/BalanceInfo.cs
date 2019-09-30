@@ -28,9 +28,15 @@ public class BalanceInfo : MonoBehaviour
         
     }
 
-    public void UpdateBalanceInfo()
+    public void UpdateBalanceInfoFirstDeal()
     {
-        creditsAmount = creditsAmount + winLossAmount - betAmount;
+        creditsAmount = creditsAmount - betAmount;
+        UpdateTextFiledInfo();
+    }
+
+    public void UpdateBalanceInfoWin()
+    {
+        creditsAmount = creditsAmount + winLossAmount;
         UpdateTextFiledInfo();
     }
 

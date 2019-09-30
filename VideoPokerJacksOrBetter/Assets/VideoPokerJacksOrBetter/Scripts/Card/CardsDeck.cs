@@ -4,23 +4,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class CardsDeck : MonoBehaviour
+public class CardsDeck 
 {
     private static string CLASS_NAME = typeof(CardsDeck).ToString();
+
+    public static CardsDeck _instance = null;
+
     public List<Card> cardsList;
     public List<CardsRank> rankList;
     public List<Suit> suitList;
 
     public const int DECK_SIZE = 52;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private CardsDeck()
     {
         InitRankList();
         InitSuitList();
         InitAllCards();
         Shuffle();
+    }
+
+    public static CardsDeck Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new CardsDeck();
+            }
+            return _instance;
+        }
     }
 
     private void InitSuitList()
@@ -32,10 +45,10 @@ public class CardsDeck : MonoBehaviour
         suitList.Add(new Suit(Suit.HEARTS, Suit.HEARTS_IMG_NAME));
         suitList.Add(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME));
 
-        DebugUtil.Instance.PrintD(CLASS_NAME, "InitSuitList", "-------------------------------------------------------------");
+        DebugConsole.Instance.PrintD(CLASS_NAME, "InitSuitList", "-------------------------------------------------------------");
         foreach (Suit suit in suitList)
         {
-            DebugUtil.Instance.PrintD(CLASS_NAME, "InitSuitList", "suit.name= " + suit.name + ", suit.imgName= " + suit.imgName);
+            DebugConsole.Instance.PrintD(CLASS_NAME, "InitSuitList", "suit.name= " + suit.name + ", suit.imgName= " + suit.imgName);
         }
     }
 
@@ -57,10 +70,10 @@ public class CardsDeck : MonoBehaviour
         rankList.Add(new CardsRank(CardsRank.QUEEN, CardsRank.QUEEN_IMG_NAME));
         rankList.Add(new CardsRank(CardsRank.KING, CardsRank.KING_IMG_NAME));
 
-        DebugUtil.Instance.PrintD(CLASS_NAME, "InitRankList", "-------------------------------------------------------------");
+        DebugConsole.Instance.PrintD(CLASS_NAME, "InitRankList", "-------------------------------------------------------------");
         foreach (CardsRank rank in rankList)
         {
-            DebugUtil.Instance.PrintD(CLASS_NAME, "InitRankList", "rank.name= " + rank.name + ", rank.imgName= " + rank.imgName);
+            DebugConsole.Instance.PrintD(CLASS_NAME, "InitRankList", "rank.name= " + rank.name + ", rank.imgName= " + rank.imgName + ", rank._value= " + rank.Value());
         }
     }
 
@@ -70,7 +83,7 @@ public class CardsDeck : MonoBehaviour
 
         int amount = 1;
 
-        DebugUtil.Instance.PrintD(CLASS_NAME, "InitAllCards", "-------------------------------------------------------------");
+        DebugConsole.Instance.PrintD(CLASS_NAME, "InitAllCards", "-------------------------------------------------------------");
 
         foreach (Suit suit in suitList)
         {
@@ -79,7 +92,7 @@ public class CardsDeck : MonoBehaviour
                 Card card = new Card(suit, rank);
                 card.id = amount;
                 cardsList.Add(card);
-                DebugUtil.Instance.PrintD(CLASS_NAME, "InitAllCards", card.ToString());
+                DebugConsole.Instance.PrintD(CLASS_NAME, "InitAllCards", card.ToString());
 
                 amount++;
             }
@@ -103,7 +116,7 @@ public class CardsDeck : MonoBehaviour
 
         foreach(Card card in cardsList)
         {
-            DebugUtil.Instance.PrintD(CLASS_NAME, "Shuffle", "imgFileName= " + card.imgFileName);
+            DebugConsole.Instance.PrintD(CLASS_NAME, "Shuffle", "imgFileName= " + card.imgFileName);
         }
     }
 
@@ -119,4 +132,49 @@ public class CardsDeck : MonoBehaviour
         }
         return returnCards;
     }
- }
+
+    public Card GetNewCard()
+    {
+        Card newCard = cardsList[0];
+        cardsList.RemoveAt(0);
+
+        return newCard;
+    }
+
+    public void PrintCards(List<Card> cards)
+    {
+        DebugConsole.Instance.PrintD(CLASS_NAME, "PrintCards", "_______________________________");
+
+        foreach (Card card in cards)
+        {
+            DebugConsole.Instance.PrintD(CLASS_NAME, "PrintCards", card.ToString());
+        }
+    }
+
+    public List<Card> GetCopy(List<Card> cards)
+    {
+        List<Card> copy = new List<Card>();
+
+        foreach (var card in cards)
+        {
+            copy.Add((Card)card.Clone());
+        }
+
+        return copy;
+    }
+
+    public List<Card> GetReplacedHand(List<Card> cards)
+    {
+        for (int i = 0; i < cards.Count; i++)
+        {
+            if (!cards[i].isHeld)
+            {
+                Card newCard = GameManagerScript.Instance.cardsDeck.GetNewCard();
+                DebugConsole.Instance.PrintD(CLASS_NAME, "GetReplacedHand", "replacing CARD " + cards[i].imgFileName + " by NEW CARD " + newCard.imgFileName);
+                cards[i] = newCard;
+            }
+        }
+
+        return cards;
+    }
+}

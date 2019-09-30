@@ -20,7 +20,7 @@ public class PayoutTable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DebugUtil.Instance.PrintD(CLASS_NAME, "Start");
+        DebugConsole.Instance.PrintD(CLASS_NAME, "Start");
         payoutTableModel = new PayoutTableModel();
 
         Transform[] allTransforms = GetComponentsInChildren<Transform>(true);
@@ -79,9 +79,22 @@ public class PayoutTable : MonoBehaviour
         return "undef";
     }
 
-    // Update is called once per frame
-    void Update()
+    public int GetPayout(int handNumber, int bet)
     {
-        
+        switch (bet)
+        {
+            case 1:
+                return payoutTableModel.payouts[handNumber].coin1;
+            case 2:
+                return payoutTableModel.payouts[handNumber].coin2;
+            case 3:
+                return payoutTableModel.payouts[handNumber].coin3;
+            case 4:
+                return payoutTableModel.payouts[handNumber].coin4;
+            case 5:
+                return payoutTableModel.payouts[handNumber].coin5;
+        }
+
+        return 0;
     }
 }

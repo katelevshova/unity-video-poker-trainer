@@ -7,44 +7,66 @@ public class CardsContainer : MonoBehaviour
 {
     private static string CLASS_NAME = typeof(CardsContainer).ToString();
     public List<CardButton> cardButtons;
-    private List<Card> cardHand;
-
     public const int HAND_SIZE = 5;
-                
+
     // Start is called before the first frame update
     void Start()
     {
-        if (cardButtons == null)
+        if (cardButtons.Count == 0)
         {
             throw new Exception("Initialize cardButtons in CardsContainer");
         }
-
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetFullHand(List<Card> cards)
     {
-        
-    }
-
-    public void SetFullHand(List<Card> cards, bool isGameStarted)
-    {
-        if(cardHand != null)
+        if(cards != null)
         {
-            cardHand.Clear();
+            int cardNumber = 0; //total 5 cards
+
+            foreach(CardButton cardBtn in cardButtons)
+            {
+                cardBtn.card = cards[cardNumber];
+                cardBtn.isSpriteReplaced = false;
+                DebugConsole.Instance.PrintD(CLASS_NAME, "SetFullHand", "cardBtn.name= " + cardBtn.name + ", cardBtn.imgFileName= " + cardBtn.card.imgFileName);
+
+                cardBtn.ShowFaceSide();
+
+                cardNumber++;
+            }
         }
+    }
 
-        cardHand = cards;
-        int cardNumber = 0; //total 5 cards
-
-        foreach(CardButton cardBtn in cardButtons)
+    public void DisableAllCardButtons()
+    {
+        DebugConsole.Instance.PrintD(CLASS_NAME, "DisableAllCardButtons");
+        foreach (CardButton cardBtn in cardButtons)
         {
-            cardBtn.card = cardHand[cardNumber];
-            DebugUtil.Instance.PrintD(CLASS_NAME, "SetFullHand", "cardBtn.name= " + cardBtn.name + ", cardBtn.imgFileName= " + cardBtn.card.imgFileName);
+            cardBtn.SetEnableButton(false);
+        }
+    }
 
-            cardBtn.ShowFaceSide(isGameStarted);
+    public void UpdateCardsFaceSide(List<Card> cards)
+    {
 
-            cardNumber++;
+        foreach (Card card in cards)
+        {
+            if (!card.isHeld)
+            {
+                for (int i = 0; i < HAND_SIZE; i++)
+                {
+                    if (!cardButtons[i].card.isHeld && !cardButtons[i].isSpriteReplaced)
+                    {
+                        cardButtons[i].card = card;
+                        cardButtons[i].UpdateImageSprite();
+                        cardButtons[i].isSpriteReplaced = true;
+                        break;
+                    }
+                }
+
+            }
+
+
         }
     }
 }

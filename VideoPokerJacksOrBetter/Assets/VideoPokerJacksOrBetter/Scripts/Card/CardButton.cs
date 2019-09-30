@@ -11,12 +11,13 @@ public class CardButton : MonoBehaviour
 
     public Card card;
     private Image image;
+    private Button button;
     private TMPro.TextMeshProUGUI txtHold;
+    public bool isSpriteReplaced = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        // get all children of ActorsContainer including disabled
         Transform[] allTransforms = GetComponentsInChildren<Transform>(true);
 
         foreach (Transform child in allTransforms)
@@ -24,6 +25,7 @@ public class CardButton : MonoBehaviour
             if (child.gameObject.name == "Button")
             {
                 image = child.gameObject.GetComponent<Image>();
+                button = child.gameObject.GetComponent<Button>();
             }
             if (child.gameObject.name == "txtHold")
             {
@@ -32,23 +34,43 @@ public class CardButton : MonoBehaviour
         }
 
         txtHold.text = "";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        SetEnableButton(false);
         
     }
-    public void ShowFaceSide(Boolean flag)
+    
+    public void ShowFaceSide()
     {
-        //if(flag)
-       // {
-            card.isFaceSide = true;
-
-            Sprite sprite = Resources.Load<Sprite>("Sprites/Cards/" + card.imgFileName);
-            image.sprite = sprite;
-            DebugUtil.Instance.PrintD(CLASS_NAME, "ShowFaceSide", "spriteName= " + image.sprite.name);
-       // }
-
+        //DebugConsole.Instance.PrintD(CLASS_NAME, "ShowFaceSide");
+        card.isFaceSide = true;
+        UpdateImageSprite();
+        txtHold.text = "";
+        SetEnableButton(true);
     }
-}
+
+    public void UpdateImageSprite()
+    {
+        Sprite sprite = Resources.Load<Sprite>("Sprites/Cards/" + card.imgFileName);
+        image.sprite = sprite;
+        DebugConsole.Instance.PrintD(CLASS_NAME, "ShowFaceSide", "spriteName= " + image.sprite.name);
+    }
+
+    public void CardBtn_OnCLick_Handler()
+    {
+        DebugConsole.Instance.PrintD(CLASS_NAME, "CardBtn_OnCLick_Handler", "gameState= " + GameManagerScript.Instance.gameState);
+
+        if(GameManagerScript.Instance.gameState == GameStates.FIRST_DEAL)
+        {
+            txtHold.text = "HOLD";
+            SetEnableButton(false);
+
+            card.isHeld = true;
+        }
+    }
+
+    public void SetEnableButton(bool flag)
+    {
+        button.interactable = flag;
+    }
+
+}   
+

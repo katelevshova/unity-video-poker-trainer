@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class GameManagerScript : MonoBehaviour
 {
     public static GameManagerScript Instance;
@@ -17,7 +18,8 @@ public class GameManagerScript : MonoBehaviour
     public CardsDeck cardsDeck;
     public BalanceInfo balanceInfo;
     public ActionBar actionBar;
-   
+    public List<Card> currentHand;
+    public int combinationRank = HandAnalyzer.LOSE_HAND;
 
     public void Awake()
     {
@@ -40,7 +42,7 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DebugUtil.Instance.PrintD(CLASS_NAME, "Start");
+        DebugConsole.Instance.PrintD(CLASS_NAME, "Start");
 
         if (payoutTable == null)
         {
@@ -50,11 +52,6 @@ public class GameManagerScript : MonoBehaviour
         if (cardsContainer == null)
         {
             throw new Exception("Initialize cardsContainer, drag CardsContainer from Hierarchy window");
-        }
-
-        if (cardsDeck == null)
-        {
-            throw new Exception("Initialize cardsDeck, drag CardsDeck from Hierarchy window");
         }
 
         if (actionBar == null)
@@ -83,15 +80,43 @@ public class GameManagerScript : MonoBehaviour
         switch(gameState)
         {
             case GameStates.INIT:
-                DebugUtil.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============INIT=================");
+                DebugConsole.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============INIT=================");
+                cardsDeck = CardsDeck.Instance;
                 txtMessage.text = "Press DEAL button to START a game ";       // localize it later
                 balanceInfo.UpdateTextFiledInfo();
                 break;
             case GameStates.FIRST_DEAL:
-                DebugUtil.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============FIRST_DEAL=================");
-                cardsContainer.SetFullHand(cardsDeck.Deal(CardsContainer.HAND_SIZE), true);
+                DebugConsole.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============FIRST_DEAL=================");
+                currentHand = new List<Card>();
+                currentHand = cardsDeck.Deal(CardsContainer.HAND_SIZE);
+                cardsContainer.SetFullHand(currentHand);
                 txtMessage.text = "Select any card to HOLD and make a second DEAL";
-                balanceInfo.UpdateBalanceInfo();
+                balanceInfo.UpdateBalanceInfoFirstDeal();
+                break;
+            case GameStates.SECOND_DEAL:
+                DebugConsole.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============SECOND_DEAL=================");
+                
+                //get rank from a hand which includes held cards
+                currentHand = cardsDeck.GetReplacedHand(currentHand);
+                cardsContainer.UpdateCardsFaceSide(currentHand);
+                cardsContainer.DisableAllCardButtons();
+                HandAnalyzer handAnalyzer = new HandAnalyzer();
+                combinationRank = handAnalyzer.GetRank(currentHand);
+                if(combinationRank == HandAnalyzer.LOSE_HAND)
+                    UpdateGameState(GameStates.LOST);
+                else
+                    UpdateGameState(GameStates.WIN);
+                break;
+            case GameStates.WIN:
+                DebugConsole.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============WIN=================");
+                txtMessage.text = "Congratulations! You won. Choose BET size and DEAL to start again.";
+                balanceInfo.winLossAmount += payoutTable.GetPayout(combinationRank, balanceInfo.betAmount);
+                balanceInfo.UpdateBalanceInfoWin();
+                break;
+            case GameStates.LOST:
+                DebugConsole.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============LOST=================");
+                //update txtMessage, win amount and credits
+                txtMessage.text = "You lost your bet. Choose BET size and DEAL to start again.";
                 break;
         }
     }
@@ -99,8 +124,27 @@ public class GameManagerScript : MonoBehaviour
     //START ----------- Button click handlers -------------------------------
     public void DealBtn_OnCLick_Handler()
     {
-        DebugUtil.Instance.PrintD(CLASS_NAME, "DealBtn_OnCLick_Handler");
-        UpdateGameState(GameStates.FIRST_DEAL);
+        DebugConsole.Instance.PrintD(CLASS_NAME, "DealBtn_OnCLick_Handler");
+
+        switch (gameState)
+        {
+            case GameStates.INIT:
+                UpdateGameState(GameStates.FIRST_DEAL);
+                break;
+            case GameStates.FIRST_DEAL:
+                UpdateGameState(GameStates.SECOND_DEAL);
+                break;
+            case GameStates.WIN:
+            case GameStates.LOST:
+                UpdateGameState(GameStates.FIRST_DEAL);
+                break;
+        }
+    }
+
+    public void DebugBtn_OnCLick_Handler()
+    {
+        DebugConsole.Instance.PrintD(CLASS_NAME, "DebugBtn_OnCLick_Handler");
+        DebugConsole.Instance.SetConsoleVisivility();
     }
     //END ----------- Button click handlers -------------------------------
 }

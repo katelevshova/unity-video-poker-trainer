@@ -27,6 +27,7 @@ public class CardsRank
     public const string SIX_IMG_NAME = "06";
     public const string SEVEN_IMG_NAME = "07";
     public const string EIGHT_IMG_NAME = "08";
+
     public const string NINE_IMG_NAME = "09";
     public const string TEN_IMG_NAME = "10";
     public const string JACK_IMG_NAME = "11";
@@ -35,10 +36,70 @@ public class CardsRank
 
     public string name;
     public string imgName;
+    private int _id;
+    private int _value;
 
-    public CardsRank(string _name, string _imgName)
+    // related to names of image files
+    public enum IDs
     {
-        name = _name;
-        imgName = _imgName;
+        Ace = 1,
+        Two,
+        Three,
+        Four,
+        Five,
+        Six,
+        Seven,
+        Eight,
+        Nine,
+        Ten,
+        Jack,
+        Queen,
+        King
     }
- }
+
+    // from lowest to highest card
+    public enum Values
+    {
+        Two = 2,
+        Three,
+        Four,
+        Five,
+        Six,
+        Seven,
+        Eight,
+        Nine,
+        Ten,
+        Jack,
+        Queen,
+        King,
+        Ace = 14
+    }
+
+    public CardsRank(string pName, string pImgName)
+    {
+        name = pName;
+        imgName = pImgName;
+        _id = int.Parse(imgName);
+       
+
+        if (name == ACE)
+        {
+            _value = (int)Values.Ace;
+        }
+        else
+        {
+            _value = _id;
+        }
+    }
+
+    public int Id()
+    {
+        return _id;
+    }
+
+    public int Value()
+    {
+        return _value;
+    }
+}
+
