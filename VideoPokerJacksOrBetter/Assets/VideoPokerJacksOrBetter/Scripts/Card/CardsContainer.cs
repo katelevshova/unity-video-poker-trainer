@@ -9,16 +9,13 @@ public class CardsContainer : MonoBehaviour
     public List<CardButton> cardButtons;
     public const int HAND_SIZE = 5;
 
-   // private Dictionary<CardButton, Card> 
-                
     // Start is called before the first frame update
     void Start()
     {
-        if (cardButtons == null)
+        if (cardButtons.Count == 0)
         {
             throw new Exception("Initialize cardButtons in CardsContainer");
         }
-
     }
 
     public void SetFullHand(List<Card> cards)
@@ -30,7 +27,8 @@ public class CardsContainer : MonoBehaviour
             foreach(CardButton cardBtn in cardButtons)
             {
                 cardBtn.card = cards[cardNumber];
-               // DebugUtil.Instance.PrintD(CLASS_NAME, "SetFullHand", "cardBtn.name= " + cardBtn.name + ", cardBtn.imgFileName= " + cardBtn.card.imgFileName);
+                cardBtn.isSpriteReplaced = false;
+                DebugUtil.Instance.PrintD(CLASS_NAME, "SetFullHand", "cardBtn.name= " + cardBtn.name + ", cardBtn.imgFileName= " + cardBtn.card.imgFileName);
 
                 cardBtn.ShowFaceSide();
 
@@ -50,6 +48,25 @@ public class CardsContainer : MonoBehaviour
 
     public void UpdateCardsFaceSide(List<Card> cards)
     {
-       
+
+        foreach (Card card in cards)
+        {
+            if (!card.isHeld)
+            {
+                for (int i = 0; i < HAND_SIZE; i++)
+                {
+                    if (!cardButtons[i].card.isHeld && !cardButtons[i].isSpriteReplaced)
+                    {
+                        cardButtons[i].card = card;
+                        cardButtons[i].UpdateImageSprite();
+                        cardButtons[i].isSpriteReplaced = true;
+                        break;
+                    }
+                }
+
+            }
+
+
+        }
     }
 }

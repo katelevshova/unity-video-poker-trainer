@@ -13,6 +13,7 @@ public class CardButton : MonoBehaviour
     private Image image;
     private Button button;
     private TMPro.TextMeshProUGUI txtHold;
+    public bool isSpriteReplaced = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,7 @@ public class CardButton : MonoBehaviour
     
     public void ShowFaceSide()
     {
+        //DebugUtil.Instance.PrintD(CLASS_NAME, "ShowFaceSide");
         card.isFaceSide = true;
         UpdateImageSprite();
         txtHold.text = "";
