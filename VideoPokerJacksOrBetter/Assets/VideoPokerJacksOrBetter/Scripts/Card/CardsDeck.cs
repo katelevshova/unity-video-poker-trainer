@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class CardsDeck : MonoBehaviour
+public class CardsDeck 
 {
     private static string CLASS_NAME = typeof(CardsDeck).ToString();
     public List<Card> cardsList;
@@ -13,9 +13,7 @@ public class CardsDeck : MonoBehaviour
 
     public const int DECK_SIZE = 52;
 
-
-    // Start is called before the first frame update
-    void Start()
+    public  CardsDeck()
     {
         InitRankList();
         InitSuitList();

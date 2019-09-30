@@ -53,11 +53,6 @@ public class GameManagerScript : MonoBehaviour
             throw new Exception("Initialize cardsContainer, drag CardsContainer from Hierarchy window");
         }
 
-        if (cardsDeck == null)
-        {
-            throw new Exception("Initialize cardsDeck, drag CardsDeck from Hierarchy window");
-        }
-
         if (actionBar == null)
         {
             throw new Exception("Initialize actionBar, drag ActionBarVerticalLG from Hierarchy window");
@@ -85,6 +80,7 @@ public class GameManagerScript : MonoBehaviour
         {
             case GameStates.INIT:
                 DebugUtil.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============INIT=================");
+                cardsDeck = new CardsDeck();
                 txtMessage.text = "Press DEAL button to START a game ";       // localize it later
                 balanceInfo.UpdateTextFiledInfo();
                 break;
