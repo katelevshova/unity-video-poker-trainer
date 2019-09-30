@@ -131,7 +131,7 @@ namespace Tests
         }
 
         [Test]
-        public void TestGetRank_isThreeOfKind_Jecks()
+        public void TestGetRank_IsThreeOfKind_Jecks()
         {
             //----Three same rank-----
             //JACK - CLUBS
@@ -161,7 +161,7 @@ namespace Tests
         }
 
         [Test]
-        public void TestGetRank_isStraight()
+        public void TestGetRank_IsStraight()
         {
             //----------------Five consecutive cards(7 - 8 - 9 - 10 - Jack) of any mixed suits
             //SEVEN - DIAMONDS
@@ -189,7 +189,7 @@ namespace Tests
         }
 
         [Test]
-        public void TestGetRank_isFlush()
+        public void TestGetRank_IsFlush()
         {
             //Any five cards of the SAME SUIT
             //TWO - DIAMONDS
@@ -217,7 +217,7 @@ namespace Tests
         }
 
         [Test]
-        public void TestGetRank_isFullHouse_3Jecks2Tens()
+        public void TestGetRank_IsFullHouse_3Jecks2Tens()
         {
             //----Three same rank-----
             //JACK - CLUBS
@@ -247,7 +247,7 @@ namespace Tests
         }
 
         [Test]
-        public void TestGetRank_isFourOfKind_Jacks()
+        public void TestGetRank_IsFourOfKind_Jacks()
         {
             //JACK - CLUBS
             Card card1 = new Card(new Suit(Suit.CLUBS, Suit.CLUBS_IMG_NAME), new CardsRank(CardsRank.JACK, CardsRank.JACK_IMG_NAME));
@@ -274,6 +274,63 @@ namespace Tests
             Assert.True(winCombination == expectedWin, "expected win combination = " + expectedWin + ", actual = " + winCombination);
         }
 
+        [Test]
+        public void TestGetRank_IsStraightFlush_6High()
+        {
+            //Five consecutive cards up to king high of the same suit.
+            //TWO - DIAMONDS
+            Card card2 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.TWO, CardsRank.TWO_IMG_NAME));
+            //THREE - DIAMONDS
+            Card card3 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.THREE, CardsRank.THREE_IMG_NAME));
+            //FOUR - DIAMONDS
+            Card card5 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.FOUR, CardsRank.FOUR_IMG_NAME));
+            //FIVE - DIAMONDS
+            Card card4 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.FIVE, CardsRank.FIVE_IMG_NAME));
+            //SIX - DIAMONDS
+            Card card1 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.SIX, CardsRank.SIX_IMG_NAME));
+
+            List<Card> cardsHand = new List<Card>();
+            cardsHand.Add(card1);
+            cardsHand.Add(card2);
+            cardsHand.Add(card3);
+            cardsHand.Add(card4);
+            cardsHand.Add(card5);
+
+            int winCombination = _handAnalyzer.GetRank(cardsHand);
+            int expectedWin = (int)HandRank.STRAIGHT_FLUSH;
+
+            Assert.True(winCombination == expectedWin, "expected win combination = " + expectedWin + ", actual = " + winCombination);
+        }
+
+        [Test]
+        public void TestGetRank_IsStraightFlush_KingHigh()
+        {
+            //Five consecutive cards up to king high of the same suit.
+            //NINE - DIAMONDS
+            Card card2 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.NINE, CardsRank.NINE_IMG_NAME));
+            //TEN - DIAMONDS
+            Card card3 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.TEN, CardsRank.TEN_IMG_NAME));
+            //JACK - DIAMONDS
+            Card card5 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.JACK, CardsRank.JACK_IMG_NAME));
+            //QUEEN - DIAMONDS
+            Card card4 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.QUEEN, CardsRank.QUEEN_IMG_NAME));
+            //KING - DIAMONDS
+            Card card1 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.KING, CardsRank.KING_IMG_NAME));
+
+            List<Card> cardsHand = new List<Card>();
+            cardsHand.Add(card1);
+            cardsHand.Add(card2);
+            cardsHand.Add(card3);
+            cardsHand.Add(card4);
+            cardsHand.Add(card5);
+
+            int winCombination = _handAnalyzer.GetRank(cardsHand);
+            int expectedWin = (int)HandRank.STRAIGHT_FLUSH;
+
+            Assert.True(winCombination == expectedWin, "expected win combination = " + expectedWin + ", actual = " + winCombination);
+        }
+
+       
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.
