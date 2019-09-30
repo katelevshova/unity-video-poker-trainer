@@ -188,6 +188,34 @@ namespace Tests
             Assert.True(winCombination == expectedWin, "expected win combination = " + expectedWin + ", actual = " + winCombination);
         }
 
+        [Test]
+        public void TestGetRank_isFlush()
+        {
+            //Any five cards of the SAME SUIT
+            //TWO - DIAMONDS
+            Card card2 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.TWO, CardsRank.TWO_IMG_NAME));
+            //EIGHT - DIAMONDS
+            Card card3 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.EIGHT, CardsRank.EIGHT_IMG_NAME));
+            //QUEEN - DIAMONDS
+            Card card5 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.QUEEN, CardsRank.QUEEN_IMG_NAME));
+            //TEN - DIAMONDS
+            Card card4 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.TEN, CardsRank.TEN_IMG_NAME));
+            //JACK - DIAMONDS
+            Card card1 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.JACK, CardsRank.JACK_IMG_NAME));
+
+            List<Card> cardsHand = new List<Card>();
+            cardsHand.Add(card1);
+            cardsHand.Add(card2);
+            cardsHand.Add(card3);
+            cardsHand.Add(card4);
+            cardsHand.Add(card5);
+
+            int winCombination = _handAnalyzer.GetRank(cardsHand);
+            int expectedWin = (int)HandRank.FLUSH;
+
+            Assert.True(winCombination == expectedWin, "expected win combination = " + expectedWin + ", actual = " + winCombination);
+        }
+
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.

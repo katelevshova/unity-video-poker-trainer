@@ -57,6 +57,7 @@ public class HandAnalyzer
             return (int)HandRank.FULL_HOUSE;
 
         //FLUSH
+        isHandFormFlush = IsFlush();
         DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for FLUSH= " + isHandFormFlush);
         if (isHandFormFlush)
             return (int)HandRank.FLUSH;
