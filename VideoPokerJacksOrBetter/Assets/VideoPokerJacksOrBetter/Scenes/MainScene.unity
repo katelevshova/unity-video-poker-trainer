@@ -888,6 +888,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnDeal: {fileID: 1752969457}
+  btnAddBet: {fileID: 182512288}
+  btnRemoveBet: {fileID: 1344454452}
+  txtBet: {fileID: 1311445692}
 --- !u!1 &150874359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,6 +1006,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 0
+--- !u!114 &182512288 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5978931205634793039, guid: ecd21e829ab9ed4419b1dd683dd74429,
+    type: 3}
+  m_PrefabInstance: {fileID: 3124370379999996186}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &226018609
 GameObject:
   m_ObjectHideFlags: 0
@@ -5596,6 +5611,30 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1230153345}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1311445692 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5235523808634790082, guid: ecd21e829ab9ed4419b1dd683dd74429,
+    type: 3}
+  m_PrefabInstance: {fileID: 3124370379999996186}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1344454452 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3382934545868788442, guid: ecd21e829ab9ed4419b1dd683dd74429,
+    type: 3}
+  m_PrefabInstance: {fileID: 3124370379999996186}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1386952614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7349,6 +7388,96 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978931205634793039, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978931205634793039, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978931205634793039, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978931205634793039, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 28001499}
+    - target: {fileID: 5978931205634793039, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddBetBtn_OnCLick_Handler
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978931205634793039, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382934545868788442, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382934545868788442, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382934545868788442, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382934545868788442, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 28001499}
+    - target: {fileID: 3382934545868788442, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RemoveBetBtn_OnCLick_Handler
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382934545868788442, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235523808634790082, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_text
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235523808634790082, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 32.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235523808634790082, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235523808634790082, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235523808634790082, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5235523808634790082, guid: ecd21e829ab9ed4419b1dd683dd74429,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecd21e829ab9ed4419b1dd683dd74429, type: 3}
