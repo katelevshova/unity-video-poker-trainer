@@ -88,6 +88,7 @@ public class GameManagerScript : MonoBehaviour
             case GameStates.FIRST_DEAL:
                 DebugConsole.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============FIRST_DEAL=================");
                 currentHand = new List<Card>();
+                cardsDeck.Reset();
                 currentHand = cardsDeck.Deal(CardsContainer.HAND_SIZE);
                 cardsContainer.SetFullHand(currentHand);
                 txtMessage.text = "Select any card to HOLD and make a second DEAL";
@@ -95,7 +96,6 @@ public class GameManagerScript : MonoBehaviour
                 break;
             case GameStates.SECOND_DEAL:
                 DebugConsole.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============SECOND_DEAL=================");
-                
                 //get rank from a hand which includes held cards
                 currentHand = cardsDeck.GetReplacedHand(currentHand);
                 cardsContainer.UpdateCardsFaceSide(currentHand);
@@ -110,7 +110,7 @@ public class GameManagerScript : MonoBehaviour
             case GameStates.WIN:
                 DebugConsole.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============WIN=================");
                 txtMessage.text = "Congratulations! You won. Choose BET size and DEAL to start again.";
-                balanceInfo.winLossAmount += payoutTable.GetPayout(combinationRank, balanceInfo.betAmount);
+                balanceInfo.winLossAmount = payoutTable.GetPayout(combinationRank, balanceInfo.betAmount);
                 balanceInfo.UpdateBalanceInfoWin();
                 break;
             case GameStates.LOST:
