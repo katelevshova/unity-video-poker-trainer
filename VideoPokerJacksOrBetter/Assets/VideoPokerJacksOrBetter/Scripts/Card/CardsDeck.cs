@@ -45,10 +45,10 @@ public class CardsDeck
         suitList.Add(new Suit(Suit.HEARTS, Suit.HEARTS_IMG_NAME));
         suitList.Add(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME));
 
-        DebugUtil.Instance.PrintD(CLASS_NAME, "InitSuitList", "-------------------------------------------------------------");
+        DebugConsole.Instance.PrintD(CLASS_NAME, "InitSuitList", "-------------------------------------------------------------");
         foreach (Suit suit in suitList)
         {
-            DebugUtil.Instance.PrintD(CLASS_NAME, "InitSuitList", "suit.name= " + suit.name + ", suit.imgName= " + suit.imgName);
+            DebugConsole.Instance.PrintD(CLASS_NAME, "InitSuitList", "suit.name= " + suit.name + ", suit.imgName= " + suit.imgName);
         }
     }
 
@@ -70,10 +70,10 @@ public class CardsDeck
         rankList.Add(new CardsRank(CardsRank.QUEEN, CardsRank.QUEEN_IMG_NAME));
         rankList.Add(new CardsRank(CardsRank.KING, CardsRank.KING_IMG_NAME));
 
-        DebugUtil.Instance.PrintD(CLASS_NAME, "InitRankList", "-------------------------------------------------------------");
+        DebugConsole.Instance.PrintD(CLASS_NAME, "InitRankList", "-------------------------------------------------------------");
         foreach (CardsRank rank in rankList)
         {
-            DebugUtil.Instance.PrintD(CLASS_NAME, "InitRankList", "rank.name= " + rank.name + ", rank.imgName= " + rank.imgName + ", rank._value= " + rank.Value());
+            DebugConsole.Instance.PrintD(CLASS_NAME, "InitRankList", "rank.name= " + rank.name + ", rank.imgName= " + rank.imgName + ", rank._value= " + rank.Value());
         }
     }
 
@@ -83,7 +83,7 @@ public class CardsDeck
 
         int amount = 1;
 
-        DebugUtil.Instance.PrintD(CLASS_NAME, "InitAllCards", "-------------------------------------------------------------");
+        DebugConsole.Instance.PrintD(CLASS_NAME, "InitAllCards", "-------------------------------------------------------------");
 
         foreach (Suit suit in suitList)
         {
@@ -92,7 +92,7 @@ public class CardsDeck
                 Card card = new Card(suit, rank);
                 card.id = amount;
                 cardsList.Add(card);
-                DebugUtil.Instance.PrintD(CLASS_NAME, "InitAllCards", card.ToString());
+                DebugConsole.Instance.PrintD(CLASS_NAME, "InitAllCards", card.ToString());
 
                 amount++;
             }
@@ -116,7 +116,7 @@ public class CardsDeck
 
         foreach(Card card in cardsList)
         {
-            DebugUtil.Instance.PrintD(CLASS_NAME, "Shuffle", "imgFileName= " + card.imgFileName);
+            DebugConsole.Instance.PrintD(CLASS_NAME, "Shuffle", "imgFileName= " + card.imgFileName);
         }
     }
 
@@ -143,11 +143,11 @@ public class CardsDeck
 
     public void PrintCards(List<Card> cards)
     {
-        DebugUtil.Instance.PrintD(CLASS_NAME, "PrintCards", "_______________________________");
+        DebugConsole.Instance.PrintD(CLASS_NAME, "PrintCards", "_______________________________");
 
         foreach (Card card in cards)
         {
-            DebugUtil.Instance.PrintD(CLASS_NAME, "PrintCards", card.ToString());
+            DebugConsole.Instance.PrintD(CLASS_NAME, "PrintCards", card.ToString());
         }
     }
 
@@ -170,7 +170,7 @@ public class CardsDeck
             if (!cards[i].isHeld)
             {
                 Card newCard = GameManagerScript.Instance.cardsDeck.GetNewCard();
-                DebugUtil.Instance.PrintD(CLASS_NAME, "GetReplacedHand", "replacing CARD " + cards[i].imgFileName + " by NEW CARD " + newCard.imgFileName);
+                DebugConsole.Instance.PrintD(CLASS_NAME, "GetReplacedHand", "replacing CARD " + cards[i].imgFileName + " by NEW CARD " + newCard.imgFileName);
                 cards[i] = newCard;
             }
         }

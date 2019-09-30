@@ -68,6 +68,7 @@
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\CardsDeck.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\CardsRank.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Card\Suit.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\DebugConsole.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\GameManagerScript.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\GameStates.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\HandNameConstants.cs" />
@@ -75,7 +76,6 @@
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\PayoutRow.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\PayoutTable.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\PayoutTableModel.cs" />
-    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Util\DebugUtil.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Util\HandAnalyzer.cs" />
     <Reference Include="Unity.TextMeshPro">
       <HintPath>D:/Projects/Unity/MobilityWare/VideoPoker/VideoPokerJacksOrBetter/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

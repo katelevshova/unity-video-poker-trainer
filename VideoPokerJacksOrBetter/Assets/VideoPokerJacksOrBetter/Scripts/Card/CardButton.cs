@@ -40,7 +40,7 @@ public class CardButton : MonoBehaviour
     
     public void ShowFaceSide()
     {
-        //DebugUtil.Instance.PrintD(CLASS_NAME, "ShowFaceSide");
+        //DebugConsole.Instance.PrintD(CLASS_NAME, "ShowFaceSide");
         card.isFaceSide = true;
         UpdateImageSprite();
         txtHold.text = "";
@@ -51,12 +51,12 @@ public class CardButton : MonoBehaviour
     {
         Sprite sprite = Resources.Load<Sprite>("Sprites/Cards/" + card.imgFileName);
         image.sprite = sprite;
-        DebugUtil.Instance.PrintD(CLASS_NAME, "ShowFaceSide", "spriteName= " + image.sprite.name);
+        DebugConsole.Instance.PrintD(CLASS_NAME, "ShowFaceSide", "spriteName= " + image.sprite.name);
     }
 
     public void CardBtn_OnCLick_Handler()
     {
-        DebugUtil.Instance.PrintD(CLASS_NAME, "CardBtn_OnCLick_Handler", "gameState= " + GameManagerScript.Instance.gameState);
+        DebugConsole.Instance.PrintD(CLASS_NAME, "CardBtn_OnCLick_Handler", "gameState= " + GameManagerScript.Instance.gameState);
 
         if(GameManagerScript.Instance.gameState == GameStates.FIRST_DEAL)
         {

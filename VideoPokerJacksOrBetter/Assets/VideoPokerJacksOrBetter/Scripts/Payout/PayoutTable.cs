@@ -20,7 +20,7 @@ public class PayoutTable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DebugUtil.Instance.PrintD(CLASS_NAME, "Start");
+        DebugConsole.Instance.PrintD(CLASS_NAME, "Start");
         payoutTableModel = new PayoutTableModel();
 
         Transform[] allTransforms = GetComponentsInChildren<Transform>(true);
@@ -77,12 +77,6 @@ public class PayoutTable : MonoBehaviour
         }
 
         return "undef";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public int GetPayout(int handNumber, int bet)

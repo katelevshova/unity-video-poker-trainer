@@ -9,7 +9,7 @@ public class PayoutTableModel
 
     public PayoutTableModel()
     {
-        DebugUtil.Instance.PrintD(CLASS_NAME, "Constructor");
+        DebugConsole.Instance.PrintD(CLASS_NAME, "Constructor");
 
         payouts = new Dictionary<int, PayoutRow>();
 

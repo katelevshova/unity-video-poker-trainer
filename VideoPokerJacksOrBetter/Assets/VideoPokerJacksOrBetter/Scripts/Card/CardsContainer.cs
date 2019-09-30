@@ -28,7 +28,7 @@ public class CardsContainer : MonoBehaviour
             {
                 cardBtn.card = cards[cardNumber];
                 cardBtn.isSpriteReplaced = false;
-                DebugUtil.Instance.PrintD(CLASS_NAME, "SetFullHand", "cardBtn.name= " + cardBtn.name + ", cardBtn.imgFileName= " + cardBtn.card.imgFileName);
+                DebugConsole.Instance.PrintD(CLASS_NAME, "SetFullHand", "cardBtn.name= " + cardBtn.name + ", cardBtn.imgFileName= " + cardBtn.card.imgFileName);
 
                 cardBtn.ShowFaceSide();
 
@@ -39,7 +39,7 @@ public class CardsContainer : MonoBehaviour
 
     public void DisableAllCardButtons()
     {
-        DebugUtil.Instance.PrintD(CLASS_NAME, "DisableAllCardButtons");
+        DebugConsole.Instance.PrintD(CLASS_NAME, "DisableAllCardButtons");
         foreach (CardButton cardBtn in cardButtons)
         {
             cardBtn.SetEnableButton(false);
