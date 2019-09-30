@@ -7,9 +7,9 @@ public class CardsContainer : MonoBehaviour
 {
     private static string CLASS_NAME = typeof(CardsContainer).ToString();
     public List<CardButton> cardButtons;
-    private List<Card> cardHand;
-
     public const int HAND_SIZE = 5;
+
+   // private Dictionary<CardButton, Card> 
                 
     // Start is called before the first frame update
     void Start()
@@ -21,30 +21,21 @@ public class CardsContainer : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetFullHand(List<Card> cards)
     {
-        
-    }
-
-    public void SetFullHand(List<Card> cards, bool isGameStarted)
-    {
-        if(cardHand != null)
+        if(cards != null)
         {
-            cardHand.Clear();
-        }
+            int cardNumber = 0; //total 5 cards
 
-        cardHand = cards;
-        int cardNumber = 0; //total 5 cards
+            foreach(CardButton cardBtn in cardButtons)
+            {
+                cardBtn.card = cards[cardNumber];
+               // DebugUtil.Instance.PrintD(CLASS_NAME, "SetFullHand", "cardBtn.name= " + cardBtn.name + ", cardBtn.imgFileName= " + cardBtn.card.imgFileName);
 
-        foreach(CardButton cardBtn in cardButtons)
-        {
-            cardBtn.card = cardHand[cardNumber];
-           // DebugUtil.Instance.PrintD(CLASS_NAME, "SetFullHand", "cardBtn.name= " + cardBtn.name + ", cardBtn.imgFileName= " + cardBtn.card.imgFileName);
+                cardBtn.ShowFaceSide();
 
-            cardBtn.ShowFaceSide(isGameStarted);
-
-            cardNumber++;
+                cardNumber++;
+            }
         }
     }
 
@@ -55,5 +46,10 @@ public class CardsContainer : MonoBehaviour
         {
             cardBtn.SetEnableButton(false);
         }
+    }
+
+    public void UpdateCardsFaceSide(List<Card> cards)
+    {
+       
     }
 }

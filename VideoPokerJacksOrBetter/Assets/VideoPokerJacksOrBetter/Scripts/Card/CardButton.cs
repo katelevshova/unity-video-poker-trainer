@@ -37,21 +37,19 @@ public class CardButton : MonoBehaviour
         
     }
     
-    //TODO: remove possible not necessary parameter
-    public void ShowFaceSide(Boolean flag)
+    public void ShowFaceSide()
     {
-        //if(flag)
-       // {
-            card.isFaceSide = true;
+        card.isFaceSide = true;
+        UpdateImageSprite();
+        txtHold.text = "";
+        SetEnableButton(true);
+    }
 
-            Sprite sprite = Resources.Load<Sprite>("Sprites/Cards/" + card.imgFileName);
-            image.sprite = sprite;
-            DebugUtil.Instance.PrintD(CLASS_NAME, "ShowFaceSide", "spriteName= " + image.sprite.name);
-
-            txtHold.text = "";
-            SetEnableButton(true);
-       // }
-
+    public void UpdateImageSprite()
+    {
+        Sprite sprite = Resources.Load<Sprite>("Sprites/Cards/" + card.imgFileName);
+        image.sprite = sprite;
+        DebugUtil.Instance.PrintD(CLASS_NAME, "ShowFaceSide", "spriteName= " + image.sprite.name);
     }
 
     public void CardBtn_OnCLick_Handler()
@@ -60,25 +58,11 @@ public class CardButton : MonoBehaviour
 
         if(GameManagerScript.Instance.gameState == GameStates.FIRST_DEAL)
         {
-            //TODO: hold a card here
             txtHold.text = "HOLD";
             SetEnableButton(false);
-        }
 
-        /*
-        switch (GameManagerScript.Instance.gameState)
-        {
-            case GameStates.FIRST_DEAL:
-                //TODO: hold a card here
-                txtHold.text = "HOLD";
-                break;
-           case GameStates.SECOND_DEAL:
-            case GameStates.WIN:
-            case GameStates.LOST:
-                SetEnableButton(false);   
-                break;    
+            card.isHeld = true;
         }
-    */
     }
 
     public void SetEnableButton(bool flag)
@@ -86,8 +70,5 @@ public class CardButton : MonoBehaviour
         button.interactable = flag;
     }
 
-    private void HoldCard()
-    {
+}   
 
-    }
-}

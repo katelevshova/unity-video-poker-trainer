@@ -92,24 +92,23 @@ public class GameManagerScript : MonoBehaviour
                 DebugUtil.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============FIRST_DEAL=================");
                 currentHand = new List<Card>();
                 currentHand = cardsDeck.Deal(CardsContainer.HAND_SIZE);
-                cardsContainer.SetFullHand(currentHand, true);
+                cardsContainer.SetFullHand(currentHand);
                 txtMessage.text = "Select any card to HOLD and make a second DEAL";
                 balanceInfo.UpdateBalanceInfoFirstDeal();
                 break;
             case GameStates.SECOND_DEAL:
                 DebugUtil.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============SECOND_DEAL=================");
-
+                
                 //get rank from a hand which includes held cards
+                currentHand = cardsDeck.GetReplacedHand(currentHand);
+                cardsContainer.UpdateCardsFaceSide(currentHand);
                 cardsContainer.DisableAllCardButtons();
+
                 combinationRank = HandAnalyzer.GetRank(currentHand);
                 if(combinationRank == HandAnalyzer.LOSE_HAND)
-                {
                     UpdateGameState(GameStates.LOST);
-                }
                 else
-                {
                     UpdateGameState(GameStates.WIN);
-                }
                 break;
             case GameStates.WIN:
                 DebugUtil.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============WIN=================");

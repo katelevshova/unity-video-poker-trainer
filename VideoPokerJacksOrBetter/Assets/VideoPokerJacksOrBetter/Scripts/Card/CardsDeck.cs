@@ -120,6 +120,14 @@ public class CardsDeck : MonoBehaviour
         return returnCards;
     }
 
+    public Card GetNewCard()
+    {
+        Card newCard = cardsList[0];
+        cardsList.RemoveAt(0);
+
+        return newCard;
+    }
+
 
     public static void PrintCards(List<Card> cards)
     {
@@ -141,5 +149,20 @@ public class CardsDeck : MonoBehaviour
         }
 
         return copy;
+    }
+
+    public List<Card> GetReplacedHand(List<Card> cards)
+    {
+        for (int i = 0; i < cards.Count; i++)
+        {
+            if (!cards[i].isHeld)
+            {
+                Card newCard = GameManagerScript.Instance.cardsDeck.GetNewCard();
+                DebugUtil.Instance.PrintD(CLASS_NAME, "GetReplacedHand", "replacing CARD " + cards[i].imgFileName + " by NEW CARD " + newCard.imgFileName);
+                cards[i] = newCard;
+            }
+        }
+
+        return cards;
     }
 }
