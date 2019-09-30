@@ -77,6 +77,13 @@ public class CardsDeck
         }
     }
 
+    public void Reset()
+    {
+        DebugConsole.Instance.PrintD(CLASS_NAME, "Reset", "*********");
+        InitAllCards();
+        Shuffle();
+    }
+
     private void InitAllCards()
     {
         cardsList = new List<Card>();
