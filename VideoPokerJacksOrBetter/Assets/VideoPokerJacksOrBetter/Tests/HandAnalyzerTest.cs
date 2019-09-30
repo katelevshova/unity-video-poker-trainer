@@ -130,6 +130,36 @@ namespace Tests
             Assert.True(winCombination == expectedWin, "expected win combination = " + expectedWin + ", actual = " + winCombination);
         }
 
+        [Test]
+        public void TestGetRank_isThreeOfKind_Jecks()
+        {
+            //----Three same rank-----
+            //JACK - CLUBS
+            Card card1 = new Card(new Suit(Suit.CLUBS, Suit.CLUBS_IMG_NAME), new CardsRank(CardsRank.JACK, CardsRank.JACK_IMG_NAME));
+            //JACK - SPADES
+            Card card4 = new Card(new Suit(Suit.SPADES, Suit.SPADES_IMG_NAME), new CardsRank(CardsRank.JACK, CardsRank.JACK_IMG_NAME));
+            //JACK - HEARTS
+            Card card2 = new Card(new Suit(Suit.HEARTS, Suit.CLUBS_IMG_NAME), new CardsRank(CardsRank.JACK, CardsRank.JACK_IMG_NAME));
+
+            //----Two different rank (otherwise its FULL_HOUSE)
+            //ACE - HEARTS
+            Card card5 = new Card(new Suit(Suit.HEARTS, Suit.HEARTS_IMG_NAME), new CardsRank(CardsRank.ACE, CardsRank.ACE_IMG_NAME));
+            //TEN - HEARTS
+            Card card3 = new Card(new Suit(Suit.HEARTS, Suit.HEARTS_IMG_NAME), new CardsRank(CardsRank.TEN, CardsRank.TEN_IMG_NAME));
+
+            List<Card> cardsHand = new List<Card>();
+            cardsHand.Add(card1);
+            cardsHand.Add(card2);
+            cardsHand.Add(card3);
+            cardsHand.Add(card4);
+            cardsHand.Add(card5);
+
+            int winCombination = _handAnalyzer.GetRank(cardsHand);
+            int expectedWin = (int)HandRank.THREE_OF_A_KIND;
+
+            Assert.True(winCombination == expectedWin, "expected win combination = " + expectedWin + ", actual = " + winCombination);
+        }
+
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.
