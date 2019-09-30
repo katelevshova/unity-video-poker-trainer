@@ -1,7 +1,9 @@
 {
     "name": "Tests",
-   
-    "optionalUnityReferences": ["TestAssemblies"],
+    "references": ["GameAssembly"],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
     "includePlatforms": [
         "Editor"
     ],
@@ -11,5 +13,4 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": []
-
 }

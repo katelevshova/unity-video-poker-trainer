@@ -11,7 +11,7 @@ namespace Tests
         [Test]
         public void IsJacksOrBetter_Test()
         {
-            //Handana
+           // HandAnalyzer.
         }
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
