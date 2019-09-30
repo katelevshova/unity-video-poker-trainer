@@ -80,7 +80,7 @@ public class GameManagerScript : MonoBehaviour
         {
             case GameStates.INIT:
                 DebugUtil.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============INIT=================");
-                cardsDeck = new CardsDeck();
+                cardsDeck = CardsDeck.Instance;
                 txtMessage.text = "Press DEAL button to START a game ";       // localize it later
                 balanceInfo.UpdateTextFiledInfo();
                 break;
@@ -99,8 +99,8 @@ public class GameManagerScript : MonoBehaviour
                 currentHand = cardsDeck.GetReplacedHand(currentHand);
                 cardsContainer.UpdateCardsFaceSide(currentHand);
                 cardsContainer.DisableAllCardButtons();
-
-                combinationRank = HandAnalyzer.GetRank(currentHand);
+                HandAnalyzer handAnalyzer = new HandAnalyzer();
+                combinationRank = handAnalyzer.GetRank(currentHand);
                 if(combinationRank == HandAnalyzer.LOSE_HAND)
                     UpdateGameState(GameStates.LOST);
                 else

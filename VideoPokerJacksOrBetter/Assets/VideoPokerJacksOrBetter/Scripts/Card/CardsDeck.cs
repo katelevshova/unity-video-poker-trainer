@@ -7,18 +7,33 @@ using Random = UnityEngine.Random;
 public class CardsDeck 
 {
     private static string CLASS_NAME = typeof(CardsDeck).ToString();
+
+    public static CardsDeck _instance = null;
+
     public List<Card> cardsList;
     public List<CardsRank> rankList;
     public List<Suit> suitList;
 
     public const int DECK_SIZE = 52;
 
-    public  CardsDeck()
+    private CardsDeck()
     {
         InitRankList();
         InitSuitList();
         InitAllCards();
         Shuffle();
+    }
+
+    public static CardsDeck Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new CardsDeck();
+            }
+            return _instance;
+        }
     }
 
     private void InitSuitList()
@@ -126,8 +141,7 @@ public class CardsDeck
         return newCard;
     }
 
-
-    public static void PrintCards(List<Card> cards)
+    public void PrintCards(List<Card> cards)
     {
         DebugUtil.Instance.PrintD(CLASS_NAME, "PrintCards", "_______________________________");
 
@@ -137,7 +151,7 @@ public class CardsDeck
         }
     }
 
-    public static List<Card> GetCopy(List<Card> cards)
+    public List<Card> GetCopy(List<Card> cards)
     {
         List<Card> copy = new List<Card>();
 
