@@ -160,6 +160,34 @@ namespace Tests
             Assert.True(winCombination == expectedWin, "expected win combination = " + expectedWin + ", actual = " + winCombination);
         }
 
+        [Test]
+        public void TestGetRank_isStraight()
+        {
+            //----------------Five consecutive cards(7 - 8 - 9 - 10 - Jack) of any mixed suits
+            //SEVEN - DIAMONDS
+            Card card2 = new Card(new Suit(Suit.DIAMONDS, Suit.SPADES_IMG_NAME), new CardsRank(CardsRank.SEVEN, CardsRank.SEVEN_IMG_NAME));
+            //EIGHT - SPADES
+            Card card3 = new Card(new Suit(Suit.SPADES, Suit.SPADES_IMG_NAME), new CardsRank(CardsRank.EIGHT, CardsRank.EIGHT_IMG_NAME));
+            //NINE - DIAMONDS
+            Card card5 = new Card(new Suit(Suit.DIAMONDS, Suit.DIAMONDS_IMG_NAME), new CardsRank(CardsRank.NINE, CardsRank.NINE_IMG_NAME));
+            //TEN - HEARTS
+            Card card4 = new Card(new Suit(Suit.HEARTS, Suit.HEARTS_IMG_NAME), new CardsRank(CardsRank.TEN, CardsRank.TEN_IMG_NAME));
+            //JACK - CLUBS
+            Card card1 = new Card(new Suit(Suit.CLUBS, Suit.CLUBS_IMG_NAME), new CardsRank(CardsRank.JACK, CardsRank.JACK_IMG_NAME));
+
+            List<Card> cardsHand = new List<Card>();
+            cardsHand.Add(card1);
+            cardsHand.Add(card2);
+            cardsHand.Add(card3);
+            cardsHand.Add(card4);
+            cardsHand.Add(card5);
+
+            int winCombination = _handAnalyzer.GetRank(cardsHand);
+            int expectedWin = (int)HandRank.STRAIGHT;
+
+            Assert.True(winCombination == expectedWin, "expected win combination = " + expectedWin + ", actual = " + winCombination);
+        }
+
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.

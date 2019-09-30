@@ -62,6 +62,7 @@ public class HandAnalyzer
             return (int)HandRank.FLUSH;
 
         //STRAIGHT
+        isHandFormStraight = IsStraight();
         DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for STRAIGHT= " + isHandFormStraight);
         if (isHandFormStraight)
             return (int)HandRank.STRAIGHT;
