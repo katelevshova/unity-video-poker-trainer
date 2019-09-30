@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class GameManagerScript : MonoBehaviour
 {
     public static GameManagerScript Instance;

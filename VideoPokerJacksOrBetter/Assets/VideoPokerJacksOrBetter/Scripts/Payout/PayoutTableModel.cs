@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PayoutTableModel
 {
-    private static string CLASS_NAME = typeof(GameManagerScript).ToString();
+    private static string CLASS_NAME = typeof(PayoutTableModel).ToString();
     public Dictionary<int, PayoutRow> payouts;
 
     public PayoutTableModel()
