@@ -1,6 +1,8 @@
 {
     "name": "Tests",
-    "references": ["GameAssembly"],
+    "references": [
+        "GameAssembly"
+    ],
     "optionalUnityReferences": [
         "TestAssemblies"
     ],

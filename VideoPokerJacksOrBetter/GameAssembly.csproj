@@ -76,9 +76,13 @@
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\PayoutRow.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\PayoutTable.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Payout\PayoutTableModel.cs" />
+    <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Util\DebugUtil.cs" />
     <Compile Include="Assets\VideoPokerJacksOrBetter\Scripts\Util\HandAnalyzer.cs" />
     <Reference Include="Unity.TextMeshPro">
       <HintPath>D:/Projects/Unity/MobilityWare/VideoPoker/VideoPokerJacksOrBetter/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>D:/Projects/Unity/MobilityWare/VideoPoker/VideoPokerJacksOrBetter/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.14f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

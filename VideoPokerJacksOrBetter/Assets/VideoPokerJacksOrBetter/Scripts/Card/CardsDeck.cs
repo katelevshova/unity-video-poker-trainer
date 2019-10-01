@@ -148,16 +148,6 @@ public class CardsDeck
         return newCard;
     }
 
-    public void PrintCards(List<Card> cards)
-    {
-        DebugConsole.Instance.PrintD(CLASS_NAME, "PrintCards", "_______________________________");
-
-        foreach (Card card in cards)
-        {
-            DebugConsole.Instance.PrintD(CLASS_NAME, "PrintCards", card.ToString());
-        }
-    }
-
     public List<Card> GetCopy(List<Card> cards)
     {
         List<Card> copy = new List<Card>();
