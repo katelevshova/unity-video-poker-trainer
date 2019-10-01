@@ -77,6 +77,13 @@ public class CardsDeck
         }
     }
 
+    public void Reset()
+    {
+        DebugConsole.Instance.PrintD(CLASS_NAME, "Reset", "*********");
+        InitAllCards();
+        Shuffle();
+    }
+
     private void InitAllCards()
     {
         cardsList = new List<Card>();
@@ -139,16 +146,6 @@ public class CardsDeck
         cardsList.RemoveAt(0);
 
         return newCard;
-    }
-
-    public void PrintCards(List<Card> cards)
-    {
-        DebugConsole.Instance.PrintD(CLASS_NAME, "PrintCards", "_______________________________");
-
-        foreach (Card card in cards)
-        {
-            DebugConsole.Instance.PrintD(CLASS_NAME, "PrintCards", card.ToString());
-        }
     }
 
     public List<Card> GetCopy(List<Card> cards)

@@ -1,6 +1,9 @@
 {
     "name": "GameAssembly",
-    "references": ["Unity.TextMeshPro"],
+    "references": [
+	"Unity.TextMeshPro",
+	"Unity.TextMeshPro.Editor"
+	],
     "optionalUnityReferences": [
         "TestAssemblies"
     ],

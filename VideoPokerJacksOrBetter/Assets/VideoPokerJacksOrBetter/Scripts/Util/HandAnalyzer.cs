@@ -20,24 +20,24 @@ public class HandAnalyzer
         cardsHand = cards;
 
         //COPY and SORT
-        DebugConsole.Instance.PrintD(CLASS_NAME, "GetRank", "PRINT SCREEN HAND ");
-        CardsDeck.Instance.PrintCards(cardsHand);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "PRINT SCREEN HAND ");
+        PrintCards(cardsHand);
 
         copyHand = CardsDeck.Instance.GetCopy(cardsHand);
         copyHand.Sort();
 
-        DebugConsole.Instance.PrintD(CLASS_NAME, "GetRank", "PRINT SORTED HAND ");
-        CardsDeck.Instance.PrintCards(copyHand);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "PRINT SORTED HAND ");
+        PrintCards(copyHand);
 
         //ROYAL_FLUSH
         bool isRoyalFlush = IsRoyalFlush();
-        DebugConsole.Instance.PrintD(CLASS_NAME, "GetRank", "for ROYAL_FLUSH= " + isRoyalFlush);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for ROYAL_FLUSH= " + isRoyalFlush);
         if (isRoyalFlush)
             return (int)HandRank.ROYAL_FLUSH;
 
         //STRAIGHT_FLUSH
         bool isStraightFlush = IsStraightFlush();
-        DebugConsole.Instance.PrintD(CLASS_NAME, "GetRank", "for STRAIGHT_FLUSH= " + isStraightFlush);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for STRAIGHT_FLUSH= " + isStraightFlush);
         if (isStraightFlush)
             return (int)HandRank.STRAIGHT_FLUSH;
 
@@ -45,49 +45,60 @@ public class HandAnalyzer
 
         //FOUR_OF_A_KIND
         bool isFourOfKind = IsFourOfAKind();
-        DebugConsole.Instance.PrintD(CLASS_NAME, "GetRank", "for FOUR_OF_A_KIND= " + isFourOfKind);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for FOUR_OF_A_KIND= " + isFourOfKind);
         if (isFourOfKind)
             return (int)HandRank.FOUR_OF_A_KIND;
 
         //FULL_HOUSE
         // check if had "three of a kind" and a pair
         bool isFullHouse = (sameRankStats.ContainsValue(3) && sameRankStats.ContainsValue(2));
-        DebugConsole.Instance.PrintD(CLASS_NAME, "GetRank", "for FULL_HOUSE= " + isFullHouse);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for FULL_HOUSE= " + isFullHouse);
         if (isFullHouse)
             return (int)HandRank.FULL_HOUSE;
 
         //FLUSH
         isHandFormFlush = IsFlush();
-        DebugConsole.Instance.PrintD(CLASS_NAME, "GetRank", "for FLUSH= " + isHandFormFlush);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for FLUSH= " + isHandFormFlush);
         if (isHandFormFlush)
             return (int)HandRank.FLUSH;
 
         //STRAIGHT
         isHandFormStraight = IsStraight();
-        DebugConsole.Instance.PrintD(CLASS_NAME, "GetRank", "for STRAIGHT= " + isHandFormStraight);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for STRAIGHT= " + isHandFormStraight);
         if (isHandFormStraight)
             return (int)HandRank.STRAIGHT;
 
         //THREE_OF_A_KIND
         //Three cards of one kind (same rank) and two other cards different rank
         bool isThreeOfKind = (sameRankStats.ContainsValue(3));
-        DebugConsole.Instance.PrintD(CLASS_NAME, "GetRank", "for THREE_OF_A_KIND= " + isThreeOfKind);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for THREE_OF_A_KIND= " + isThreeOfKind);
         if (isThreeOfKind)
             return (int)HandRank.THREE_OF_A_KIND;
 
         //TWO_PAIR
         bool isTwoPair = IsTwoPair();
-        DebugConsole.Instance.PrintD(CLASS_NAME, "GetRank", "for TWO_PAIR= " + isTwoPair);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for TWO_PAIR= " + isTwoPair);
         if (isTwoPair)
             return (int)HandRank.TWO_PAIR;
 
         //JACKS_OR_BETTER
         bool isJacksOrBetter = IsJacksOrBetter();
-        DebugConsole.Instance.PrintD(CLASS_NAME, "GetRank", "for JACKS_OR_BETTER= " + isJacksOrBetter);
+        DebugUtil.Instance.PrintD(CLASS_NAME, "GetRank", "for JACKS_OR_BETTER= " + isJacksOrBetter);
         if (isJacksOrBetter)
             return (int)HandRank.JACKS_OR_BETTER;
 
         return -1; // Return ID of winning hand combination, or - 1 if losing 
+    }
+
+
+    public void PrintCards(List<Card> cards)
+    {
+        DebugUtil.Instance.PrintD(CLASS_NAME, "PrintCards", "_______________________________");
+
+        foreach (Card card in cards)
+        {
+            DebugUtil.Instance.PrintD(CLASS_NAME, "PrintCards", card.ToString());
+        }
     }
 
     /**
