@@ -1,4 +1,4 @@
-# VideoPoker
+# Video Poker Trainer
 
 Project uses additional Package "TextMesh Pro"
 
@@ -25,3 +25,19 @@ Run VideoPokerJacksOrBetter.exe
 7. Credits amount increases when there is a win
 
 8. If want to continue repeat steps 1-7, otherwise close the app
+
+
+## Screenshots
+
+First Deal
+
+![Screenshot_1](https://user-images.githubusercontent.com/11220246/89088044-4614d600-d34b-11ea-9480-eb381a587a9a.png)
+
+Second Deal
+
+![Screenshot_2](https://user-images.githubusercontent.com/11220246/89088046-46ad6c80-d34b-11ea-98c7-f894183f68d1.png)
+
+Result
+
+![Screenshot_3](https://user-images.githubusercontent.com/11220246/89088047-46ad6c80-d34b-11ea-97c9-bd6789198952.png)
+
