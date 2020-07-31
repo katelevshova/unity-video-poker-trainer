@@ -1,8 +1,7 @@
 # Video Poker Trainer
 
-Project uses additional Package "TextMesh Pro"
-
-Added tests for HandAnalyzer class - EditMode (others are in progress)
+### Quick summary ###
+One of the most common video poker variations you will find in casinos, Jacks or Better is a great game to play if you are new to video poker as it has a relatively low variance and full pay machines are quite easy to find. As the name suggests the lowest possible hand is a pair of jacks or better (J, Q, K or A's). 
 
 ## How To Play
 
