@@ -8,7 +8,7 @@ Added tests for HandAnalyzer class - EditMode (others are in progress)
 
 Download ZIP from https://github.com/katelevshova/unity-video-poker-trainer/releases and unpack it
 
-Run **VideoPokerJacksOrBetter.exe
+Run VideoPokerJacksOrBetter.exe
 
 1. Choose a bet size using arrow buttons in the right action bar
 
