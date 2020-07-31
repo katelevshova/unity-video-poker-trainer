@@ -4,7 +4,7 @@ Project uses additional Package "TextMesh Pro"
 
 Added tests for HandAnalyzer class - EditMode (others are in progress)
 
-## HOW TO PLAY
+## How To Play
 
 Download ZIP from https://github.com/katelevshova/unity-video-poker-trainer/releases and unpack it
 
