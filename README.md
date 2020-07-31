@@ -6,6 +6,10 @@ Added tests for HandAnalyzer class - EditMode (others are in progress)
 
 ## HOW TO PLAY
 
+Download ZIP from https://github.com/katelevshova/unity-video-poker-trainer/releases and unpack it
+
+Run **VideoPokerJacksOrBetter.exe
+
 1. Choose a bet size using arrow buttons in the right action bar
 
 2. Press DEAL button to get first deal, Credits amount is updated at the same time according to chosen bet size
