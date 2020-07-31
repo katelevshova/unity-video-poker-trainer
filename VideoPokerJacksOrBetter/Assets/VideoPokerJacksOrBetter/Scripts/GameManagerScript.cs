@@ -109,7 +109,11 @@ public class GameManagerScript : MonoBehaviour
                 break;
             case GameStates.WIN:
                 DebugConsole.Instance.PrintD(CLASS_NAME, "UpdateGameState", "=============WIN=================");
-                txtMessage.text = "Congratulations! You won. Choose BET size and DEAL to start again.";
+                string txtCombination = Enum.GetName(typeof(HandRank), combinationRank).Replace("_", " ").ToLowerInvariant();
+                txtMessage.text = "Congratulations! You won. Choose BET size and DEAL to start again. "+txtCombination;
+
+               
+
                 balanceInfo.winLossAmount = payoutTable.GetPayout(combinationRank, balanceInfo.betAmount);
                 balanceInfo.UpdateBalanceInfoWin();
                 break;
